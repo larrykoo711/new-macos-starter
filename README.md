@@ -1,12 +1,13 @@
 # macOS Starter
 
-> **From Zero to Hero** - 专为工程师打造的 macOS 开发环境配置指南
->
-> YC & Silicon Valley & Elon Musk Standard
+> **From Zero to Hero** — An opinionated macOS development environment setup guide for engineers.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Platform](https://img.shields.io/badge/Platform-macOS-blue.svg)](https://www.apple.com/macos)
-[![Architecture](https://img.shields.io/badge/Architecture-Apple%20Silicon-green.svg)](https://www.apple.com/mac)
+[![Architecture](https://img.shields.io/badge/Architecture-Apple%20Silicon%20%7C%20Intel-green.svg)](https://www.apple.com/mac)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
+**[中文文档](README.zh-CN.md)**
 
 ## Philosophy
 
@@ -14,20 +15,32 @@
 Ship Fast. Break Things. Fix Faster.
 ```
 
-- **Minimal Friction** - 一键配置，零阻力启动
-- **Battle-Tested** - 生产环境验证的工具链
-- **Opinionated** - 有主见的配置，不浪费时间选择
-- **Reproducible** - 可复现的开发环境
+- **Minimal Friction** — One-click setup, zero resistance to start coding
+- **Battle-Tested** — Production-proven toolchain used by top engineers
+- **Opinionated** — Curated choices so you don't waste time deciding
+- **Reproducible** — Consistent environment across all your machines
 
 ## Quick Start
 
 ```bash
 # Clone this repo
-git clone https://github.com/yourusername/macOS-Starter.git
-cd macOS-Starter
+git clone https://github.com/larrykoo711/new-macos-starter.git
+cd new-macos-starter
 
 # Run the bootstrap script
 ./scripts/bootstrap.sh
+```
+
+That's it! The script will install Homebrew, CLI tools, applications, fonts, and Oh-My-Zsh with plugins.
+
+### Options
+
+```bash
+# Standard installation (recommended)
+./scripts/bootstrap.sh
+
+# Include macOS system preferences optimization
+./scripts/bootstrap.sh --with-macos-defaults
 ```
 
 ## What's Inside
@@ -36,125 +49,149 @@ cd macOS-Starter
 
 | Category | Tool | Why |
 |----------|------|-----|
-| **Package Manager** | [Homebrew](https://brew.sh) | macOS 的标准包管理器 |
-| **Shell** | Zsh + Oh-My-Zsh + Starship | 现代化 Shell 体验 |
-| **Terminal** | [Warp](https://warp.dev) | AI 驱动的现代终端 |
-| **Launcher** | [Raycast](https://raycast.com) | Spotlight 替代 + 窗口管理 |
-| **Version Control** | Git + gh CLI | GitHub 原生集成 |
+| **Package Manager** | [Homebrew](https://brew.sh) | The standard package manager for macOS |
+| **Shell** | Zsh + Oh-My-Zsh + Starship | Modern shell experience with beautiful prompts |
+| **Terminal** | [Warp](https://warp.dev) | AI-powered modern terminal |
+| **Launcher** | [Raycast](https://raycast.com) | Spotlight replacement + window management |
+| **Version Control** | Git + gh CLI | Native GitHub integration |
 
-### Development
+### Development Environment
 
 | Category | Tool | Why |
 |----------|------|-----|
-| **Node.js** | fnm + pnpm | 快速版本管理 + 高效包管理 |
-| **Python** | uv | Rust 构建，管理版本和依赖 |
-| **Go** | goenv | 多版本管理 |
-| **Container** | OrbStack | 轻量级 Docker/K8s (替代 Docker Desktop) |
-| **Kubernetes** | kubectl + helm + k9s + kubeswitch | 云原生开发全套工具 |
+| **Node.js** | fnm + pnpm | Fast version management + efficient package manager |
+| **Python** | uv | Rust-built, manages both versions and dependencies |
+| **Go** | goenv | Multi-version management |
+| **Container** | OrbStack | Lightweight Docker/K8s (replaces Docker Desktop) |
+| **Kubernetes** | kubectl + helm + k9s + kubeswitch | Complete cloud-native toolkit |
 
 ### Editor & IDE
 
 | Tool | Description |
 |------|-------------|
-| Cursor | AI-first 编辑器 (主力) |
-| VS Code | 备用编辑器 |
-| JetBrains Toolbox | JetBrains IDE 管理 |
+| [Cursor](https://cursor.sh) | AI-first code editor (primary) |
+| [VS Code](https://code.visualstudio.com) | Backup editor |
+| [JetBrains Toolbox](https://www.jetbrains.com/toolbox-app/) | JetBrains IDE manager |
 
-### Vibe Coding (AI 辅助编程)
+### Vibe Coding (AI-Assisted Programming)
 
 | Tool | Description |
 |------|-------------|
-| Claude Code | Anthropic 官方 CLI，终端中的 AI 编程助手 |
-| Cursor | AI-first 代码编辑器 |
-| OpenCode | 开源终端 AI 编程工具 |
+| [Claude Code](https://claude.ai/claude-code) | Anthropic's official CLI for AI programming in terminal |
+| [Cursor](https://cursor.sh) | AI-first code editor |
+| [OpenCode](https://github.com/opencode-ai/opencode) | Open-source terminal AI coding tool |
 
 ### Essential Apps
 
 | Category | Apps |
 |----------|------|
-| **必装** | Raycast, 1Password, Chrome, KeepingYouAwake, Keka |
-| **开发** | Cursor, Warp, OrbStack, Apifox, Proxyman, Sourcetree |
-| **工作** | 飞书, 钉钉, 企业微信, 腾讯会议, Notion |
-| **AI** | Claude Code, LM Studio, Cherry Studio |
-| **系统** | iStat Menus, MonitorControl, Gas Mask |
+| **Must Have** | Raycast, 1Password, Chrome, KeepingYouAwake, Keka |
+| **Development** | Cursor, Warp, OrbStack, Apifox, Proxyman, Sourcetree |
+| **Productivity** | Notion, Slack, Discord |
+| **AI Tools** | Claude Code, LM Studio |
+| **System** | iStat Menus, MonitorControl, Gas Mask |
 
 ## Documentation
 
 | Chapter | Description |
 |---------|-------------|
-| [01. System Setup](docs/01-system-setup.md) | 系统初始化配置 |
-| [02. Homebrew](docs/02-homebrew.md) | 包管理器安装 |
-| [03. Shell](docs/03-shell.md) | Zsh + Oh-My-Zsh 配置 |
-| [04. Fonts](docs/04-fonts.md) | 编程字体安装 |
+| [01. System Setup](docs/01-system-setup.md) | Initial system configuration |
+| [02. Homebrew](docs/02-homebrew.md) | Package manager installation |
+| [03. Shell](docs/03-shell.md) | Zsh + Oh-My-Zsh configuration |
+| [04. Fonts](docs/04-fonts.md) | Programming fonts installation |
 | [05. Dev Environment](docs/05-dev-environment.md) | Git, Node.js, Python, Go, Container |
-| [06. Editor](docs/06-editor.md) | VS Code / Cursor 配置 |
-| [07. Vibe Coding](docs/07-vibe-coding.md) | AI 辅助编程 (Claude Code, Cursor, OpenCode) |
-| [08. Apps](docs/08-apps.md) | 推荐应用 |
-| [09. macOS](docs/09-macos.md) | 系统优化 |
+| [06. Editor](docs/06-editor.md) | VS Code / Cursor configuration |
+| [07. Vibe Coding](docs/07-vibe-coding.md) | AI-assisted programming tools |
+| [08. Apps](docs/08-apps.md) | Recommended applications |
+| [09. macOS](docs/09-macos.md) | System optimization |
 
-## Scripts
+## Project Structure
 
-```bash
-scripts/
-├── bootstrap.sh          # 一键安装入口
-├── Brewfile              # 核心包定义 (CLI, Apps, Fonts)
-└── macos-defaults.sh     # macOS 系统配置 (可选)
+```
+macOS-Starter/
+├── scripts/
+│   ├── bootstrap.sh          # One-click installation entry point
+│   ├── Brewfile              # Homebrew packages (CLI, Apps, Fonts)
+│   └── macos-defaults.sh     # macOS system preferences (optional)
+├── configs/
+│   ├── shell/                # .zshrc, .zprofile
+│   ├── git/                  # .gitconfig, .gitignore_global
+│   ├── editors/              # VS Code settings, Biome config
+│   └── terminal/             # Starship prompt config
+└── docs/                     # Step-by-step guides (01-09)
 ```
 
-**Usage:**
+## Customization
 
-```bash
-# 标准安装 (推荐)
-./scripts/bootstrap.sh
+### Using the Brewfile
 
-# 包含 macOS 系统配置
-./scripts/bootstrap.sh --with-macos-defaults
+Edit `scripts/Brewfile` to add or remove packages:
+
+```ruby
+# Add a CLI tool
+brew "your-tool"
+
+# Add an application
+cask "your-app"
+
+# Add a font
+cask "font-your-font"
 ```
 
-安装完成后，按照 `docs/` 目录中的文档完成 Node.js、Python、Git 等配置。
-
-## Config Files
+Then run:
 
 ```bash
-configs/
-├── shell/
-│   ├── .zshrc
-│   └── .zprofile
-├── git/
-│   ├── .gitconfig
-│   └── .gitignore_global
-├── editors/
-│   ├── vscode-settings.json
-│   └── biome.json
-└── terminal/
-    └── starship.toml
+brew bundle install --file=scripts/Brewfile
 ```
 
-## Current Environment Snapshot
+### Post-Installation Setup
 
-基于 Larry's MacBook Pro (Apple Silicon) 的配置快照：
+After running `bootstrap.sh`, complete these manual configurations:
+
+```bash
+# 1. Setup Node.js
+fnm install --lts
+fnm default lts-latest
+
+# 2. Setup Python
+uv python install 3.12
+
+# 3. Configure Git (edit with your info)
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+```
+
+See the [documentation](docs/) for detailed guides.
+
+## Tested Environment
 
 | Component | Version |
 |-----------|---------|
-| macOS | Darwin 25.1.0 |
-| Node.js | v22.21.1 |
-| npm | 10.9.4 |
-| pnpm | 10.27.0 |
-| Python | 3.14.0 (via uv) |
-| Go | 1.23.9 |
-| OrbStack | latest |
-| kubectl | v1.32.7 |
-| Helm | v4.0.1 |
-| Git | 2.52.0 |
+| macOS | Sequoia 15.x / Sonoma 14.x |
+| Architecture | Apple Silicon (M1/M2/M3/M4) / Intel |
+| Homebrew | 4.x |
+| Node.js | 22.x LTS |
+| Python | 3.12+ |
+| Go | 1.23+ |
 
 ## Contributing
 
-PRs welcome. Keep it simple. Ship fast.
+Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md) before submitting a PR.
+
+- Found a bug? [Open an issue](https://github.com/larrykoo711/new-macos-starter/issues/new?template=bug_report.md)
+- Have a feature idea? [Start a discussion](https://github.com/larrykoo711/new-macos-starter/issues/new?template=feature_request.md)
+- Want to contribute? [Submit a PR](https://github.com/larrykoo711/new-macos-starter/pulls)
 
 ## License
 
-MIT License - Use it, modify it, ship it.
+[MIT License](LICENSE) — Use it, modify it, ship it.
+
+## Acknowledgments
+
+Inspired by the engineering cultures at YC startups, Silicon Valley companies, and the open-source community.
 
 ---
 
-**Built with focus by engineers, for engineers.**
+<p align="center">
+  <strong>Built with focus by engineers, for engineers.</strong>
+</p>
