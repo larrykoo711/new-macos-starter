@@ -2,9 +2,26 @@
 
 > 编程字体 - 代码可读性的基础
 
+**图例**: 🆓 免费开源 | 💰 付费 | 🔄 Freemium | 📦 Homebrew 可安装
+
+---
+
 ## 推荐字体
 
+| 字体 | 来源 | 定价 | 安装方式 |
+|------|------|------|----------|
+| **JetBrains Mono** | JetBrains | 🆓 开源免费 | 📦 `brew install --cask font-jetbrains-mono` |
+| **Fira Code** | Mozilla | 🆓 开源免费 | 📦 `brew install --cask font-fira-code` |
+| **Source Code Pro** | Adobe | 🆓 开源免费 | 📦 `brew install --cask font-source-code-pro` |
+| **Hack** | Source Foundry | 🆓 开源免费 | 📦 `brew install --cask font-hack` |
+| **Cascadia Code** | Microsoft | 🆓 开源免费 | 📦 `brew install --cask font-cascadia-code` |
+| **Meslo** | André Berg | 🆓 开源免费 | 📦 `brew install --cask font-meslo-lg-nerd-font` |
+
+---
+
 ### JetBrains Mono (首选)
+
+> 🆓 **开源免费** | 📦 Homebrew | [官网](https://www.jetbrains.com/lp/mono/)
 
 专为开发者设计，支持连字特性。
 
@@ -24,6 +41,8 @@ brew install --cask font-jetbrains-mono-nerd-font
 
 ### Fira Code
 
+> 🆓 **开源免费** | 📦 Homebrew | [GitHub](https://github.com/tonsky/FiraCode)
+
 Mozilla 推出的编程字体，连字支持出色。
 
 ```bash
@@ -33,6 +52,8 @@ brew install --cask font-fira-code-nerd-font
 
 ### Source Code Pro
 
+> 🆓 **开源免费** | 📦 Homebrew | [GitHub](https://github.com/adobe-fonts/source-code-pro)
+
 Adobe 出品，经典选择。
 
 ```bash
@@ -40,6 +61,8 @@ brew install --cask font-source-code-pro
 ```
 
 ### Hack
+
+> 🆓 **开源免费** | 📦 Homebrew | [官网](https://sourcefoundry.org/hack/)
 
 清晰易读的等宽字体。
 
@@ -50,6 +73,8 @@ brew install --cask font-hack-nerd-font
 
 ### Cascadia Code
 
+> 🆓 **开源免费** | 📦 Homebrew | [GitHub](https://github.com/microsoft/cascadia-code)
+
 Microsoft 出品，Windows Terminal 默认字体。
 
 ```bash
@@ -59,13 +84,19 @@ brew install --cask font-cascadia-code-nf
 
 ### Meslo (Powerline)
 
+> 🆓 **开源免费** | 📦 Homebrew | [GitHub](https://github.com/andreberg/Meslo-Font)
+
 基于 Apple Menlo 的改进版。
 
 ```bash
 brew install --cask font-meslo-lg-nerd-font
 ```
 
+---
+
 ## Nerd Fonts
+
+> 🆓 **开源免费** | [官网](https://www.nerdfonts.com)
 
 Nerd Fonts 是在原有字体基础上添加了开发相关图标的字体。
 
@@ -79,15 +110,14 @@ Nerd Fonts 是在原有字体基础上添加了开发相关图标的字体。
 ### 安装
 
 ```bash
-# 添加字体 tap
-brew tap homebrew/cask-fonts
-
 # 安装常用 Nerd Fonts
 brew install --cask font-jetbrains-mono-nerd-font
 brew install --cask font-fira-code-nerd-font
 brew install --cask font-hack-nerd-font
 brew install --cask font-meslo-lg-nerd-font
 ```
+
+---
 
 ## 配置
 
@@ -119,6 +149,8 @@ brew install --cask font-meslo-lg-nerd-font
 ### Cursor
 
 与 VS Code 相同配置。
+
+---
 
 ## 连字 (Ligatures)
 
@@ -156,6 +188,8 @@ VS Code:
 }
 ```
 
+---
+
 ## 字体选择建议
 
 ### 按场景
@@ -176,6 +210,8 @@ VS Code:
 | Go | JetBrains Mono |
 | Rust | Fira Code |
 
+---
+
 ## 中文字体搭配
 
 ### 推荐组合
@@ -188,6 +224,12 @@ VS Code:
 
 ### 安装中文字体
 
+| 字体 | 说明 | 定价 | 安装方式 |
+|------|------|------|----------|
+| **Noto Sans CJK SC** | Google 思源黑体 | 🆓 开源免费 | 📦 `brew install --cask font-noto-sans-cjk-sc` |
+| **Sarasa Gothic** | 更纱黑体 (等宽中英文) | 🆓 开源免费 | 📦 `brew install --cask font-sarasa-gothic` |
+| **Inter** | 现代 UI 字体 | 🆓 开源免费 | 📦 `brew install --cask font-inter` |
+
 ```bash
 # Noto Sans CJK
 brew install --cask font-noto-sans-cjk-sc
@@ -195,6 +237,8 @@ brew install --cask font-noto-sans-cjk-sc
 # 更纱黑体 (等宽中英文)
 brew install --cask font-sarasa-gothic
 ```
+
+---
 
 ## 字体大小建议
 
@@ -213,14 +257,13 @@ brew install --cask font-sarasa-gothic
 - 正常距离 (50-70cm): 14-15
 - 远距离 (>70cm): 15-16
 
+---
+
 ## 快速安装脚本
 
 ```bash
 #!/bin/bash
 # install-fonts.sh
-
-# 添加字体 tap
-brew tap homebrew/cask-fonts
 
 # 安装编程字体
 brew install --cask font-jetbrains-mono

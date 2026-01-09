@@ -2,14 +2,22 @@
 
 > 开发环境配置 - Git, Node.js, Python, Go, Container
 
+**图例**: 🆓 免费开源 | 💰 付费 | 🔄 Freemium | 📦 Homebrew 可安装
+
+---
+
 ## Git
 
 ### Installation
 
+| 工具 | 说明 | 定价 | 安装方式 |
+|------|------|------|----------|
+| **git** | 版本控制系统 | 🆓 开源免费 | 📦 `brew install git` |
+| **gh** | GitHub CLI | 🆓 开源免费 | 📦 `brew install gh` |
+| **delta** | 更好的 git diff | 🆓 开源免费 | 📦 `brew install delta` |
+
 ```bash
-brew install git
-brew install gh       # GitHub CLI
-brew install delta    # Better diff
+brew install git gh delta
 ```
 
 ### Global Configuration
@@ -116,7 +124,16 @@ Host github.com
 
 ## Node.js
 
+### 工具总览
+
+| 工具 | 说明 | 定价 | 安装方式 |
+|------|------|------|----------|
+| **fnm** | 快速 Node 版本管理器 | 🆓 开源免费 | 📦 `brew install fnm` |
+| **pnpm** | 高效包管理器 | 🆓 开源免费 | `corepack enable` |
+
 ### fnm (Fast Node Manager)
+
+> 🆓 **开源免费** | 📦 Homebrew | [GitHub](https://github.com/Schniz/fnm)
 
 ```bash
 brew install fnm
@@ -142,6 +159,8 @@ fnm list-remote
 ```
 
 ### pnpm
+
+> 🆓 **开源免费** | [官网](https://pnpm.io)
 
 ```bash
 # 启用 corepack
@@ -184,7 +203,16 @@ echo "22" > .nvmrc
 
 ## Python
 
+### 工具总览
+
+| 工具 | 说明 | 定价 | 安装方式 |
+|------|------|------|----------|
+| **uv** | Rust 构建的 Python 工具链 | 🆓 开源免费 | 📦 `brew install uv` |
+| **ruff** | 极速 Python Linter | 🆓 开源免费 | `uv add --dev ruff` |
+
 ### uv (Python 全环境管理)
+
+> 🆓 **开源免费** | 📦 Homebrew | [GitHub](https://github.com/astral-sh/uv)
 
 uv 是 Rust 构建的极速 Python 工具链，可管理 Python 版本和依赖。
 
@@ -259,6 +287,8 @@ strict = true
 
 ### Ruff (Linter)
 
+> 🆓 **开源免费** | [GitHub](https://github.com/astral-sh/ruff)
+
 ```bash
 uv add --dev ruff
 
@@ -276,7 +306,18 @@ ruff format .
 
 ## Go
 
+### 工具总览
+
+| 工具 | 说明 | 定价 | 安装方式 |
+|------|------|------|----------|
+| **goenv** | Go 版本管理器 | 🆓 开源免费 | 📦 `brew install goenv` |
+| **go** | Go 语言 | 🆓 开源免费 | 📦 `brew install go` |
+| **golangci-lint** | Go 代码检查 | 🆓 开源免费 | 📦 `brew install golangci-lint` |
+| **air** | 热重载工具 | 🆓 开源免费 | `go install` |
+
 ### goenv (版本管理)
+
+> 🆓 **开源免费** | 📦 Homebrew | [GitHub](https://github.com/go-nv/goenv)
 
 ```bash
 brew install goenv
@@ -318,6 +359,8 @@ export GOPROXY="https://goproxy.cn,direct"  # 中国用户
 
 ### golangci-lint
 
+> 🆓 **开源免费** | 📦 Homebrew | [GitHub](https://github.com/golangci/golangci-lint)
+
 ```bash
 brew install golangci-lint
 
@@ -327,6 +370,8 @@ golangci-lint run --fix
 ```
 
 ### Air (Hot Reload)
+
+> 🆓 **开源免费** | [GitHub](https://github.com/air-verse/air)
 
 ```bash
 go install github.com/air-verse/air@latest
@@ -342,7 +387,20 @@ air
 
 ## Container & Kubernetes
 
+### 工具总览
+
+| 工具 | 说明 | 定价 | 安装方式 |
+|------|------|------|----------|
+| **OrbStack** | 轻量级 Docker/K8s | 🔄 个人免费/Pro $8/月 | 📦 `brew install --cask orbstack` |
+| **kubectl** | K8s 命令行 | 🆓 开源免费 | 📦 `brew install kubectl` |
+| **helm** | K8s 包管理器 | 🆓 开源免费 | 📦 `brew install helm` |
+| **k9s** | K8s TUI | 🆓 开源免费 | 📦 `brew install k9s` |
+| **kubeswitch** | Context 切换 | 🆓 开源免费 | 📦 `brew install danielfoehrkn/switch/switch` |
+| **stern** | 多 Pod 日志 | 🆓 开源免费 | 📦 `brew install stern` |
+
 ### OrbStack (推荐)
+
+> 🔄 **Freemium** (个人免费/Pro $8/月) | 📦 Homebrew | [官网](https://orbstack.dev)
 
 OrbStack 是 Docker Desktop 的轻量级替代品，性能更好，资源占用更少。
 
@@ -428,6 +486,8 @@ orb config kubernetes.enabled true
 
 ### kubectl
 
+> 🆓 **开源免费** | 📦 Homebrew | [官网](https://kubernetes.io/docs/tasks/tools/)
+
 ```bash
 brew install kubectl
 
@@ -447,6 +507,8 @@ kubectl apply -f deployment.yaml
 ```
 
 ### Helm
+
+> 🆓 **开源免费** | 📦 Homebrew | [官网](https://helm.sh)
 
 ```bash
 brew install helm
@@ -470,6 +532,8 @@ helm uninstall my-nginx
 ```
 
 ### kubeswitch (Context 切换)
+
+> 🆓 **开源免费** | 📦 Homebrew | [GitHub](https://github.com/danielfoehrKn/kubeswitch)
 
 ```bash
 brew install danielfoehrkn/switch/switch
@@ -496,6 +560,8 @@ switch list
 
 ### k9s (TUI)
 
+> 🆓 **开源免费** | 📦 Homebrew | [GitHub](https://github.com/derailed/k9s)
+
 ```bash
 brew install k9s
 
@@ -512,6 +578,8 @@ K9s 提供 Kubernetes 集群的终端 UI，支持：
 
 ### stern (多 Pod 日志)
 
+> 🆓 **开源免费** | 📦 Homebrew | [GitHub](https://github.com/stern/stern)
+
 ```bash
 brew install stern
 
@@ -524,7 +592,19 @@ stern -n namespace app
 
 ## Cloud & Platform CLI
 
+### 工具总览
+
+| 工具 | 说明 | 定价 | 安装方式 |
+|------|------|------|----------|
+| **awscli** | AWS 命令行 | 🆓 免费 (AWS 收费) | 📦 `brew install awscli` |
+| **google-cloud-sdk** | GCP 命令行 | 🆓 免费 (GCP 收费) | 📦 `brew install google-cloud-sdk` |
+| **vercel** | Vercel CLI | 🔄 Freemium | `pnpm add -g vercel` |
+| **wrangler** | Cloudflare CLI | 🔄 Freemium | `pnpm add -g wrangler` |
+| **rclone** | 通用云存储 CLI | 🆓 开源免费 | 📦 `brew install rclone` |
+
 ### AWS CLI
+
+> 🆓 **免费** (AWS 服务收费) | 📦 Homebrew | [官网](https://aws.amazon.com/cli/)
 
 ```bash
 brew install awscli
@@ -541,6 +621,8 @@ aws ec2 describe-instances
 
 ### Google Cloud SDK
 
+> 🆓 **免费** (GCP 服务收费) | 📦 Homebrew | [官网](https://cloud.google.com/sdk)
+
 ```bash
 brew install google-cloud-sdk
 
@@ -554,6 +636,8 @@ gcloud auth login
 ```
 
 ### Vercel CLI
+
+> 🔄 **Freemium** | [官网](https://vercel.com)
 
 ```bash
 # 推荐用 pnpm 安装
@@ -573,6 +657,8 @@ vercel env add      # 添加环境变量
 
 ### Cloudflare Wrangler
 
+> 🔄 **Freemium** | [官网](https://developers.cloudflare.com/workers/)
+
 ```bash
 # 推荐用 pnpm 安装
 pnpm add -g wrangler
@@ -590,6 +676,8 @@ wrangler r2 object get bucket/key
 ```
 
 ### rclone (通用云存储)
+
+> 🆓 **开源免费** | 📦 Homebrew | [官网](https://rclone.org)
 
 ```bash
 brew install rclone

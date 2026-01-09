@@ -113,7 +113,8 @@ go.work
 # Rust
 # ===================
 target/
-Cargo.lock
+# Note: Cargo.lock should be committed for applications, ignored only for libraries
+# Cargo.lock
 
 # ===================
 # Temporary

@@ -81,3 +81,16 @@
     light = false
     side-by-side = true
     line-numbers = true
+
+# ===================
+# GPG Signing (Optional)
+# ===================
+# Uncomment and configure for commit signing
+# [user]
+#     signingkey = YOUR_GPG_KEY_ID
+# [commit]
+#     gpgsign = true
+# [tag]
+#     gpgsign = true
+# [gpg]
+#     program = /opt/homebrew/bin/gpg

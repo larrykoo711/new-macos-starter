@@ -22,26 +22,48 @@ Ship Fast. Break Things. Fix Faster.
 
 ## 快速开始
 
+### 方式一：AI 驱动的交互式安装（推荐）
+
+使用 [Claude Code](https://claude.ai/claude-code) 或 [Cursor](https://cursor.sh) 获得个性化的对话式安装体验：
+
 ```bash
 # 克隆仓库
 git clone https://github.com/larrykoo711/new-macos-starter.git
 cd new-macos-starter
 
-# 运行安装脚本
-./scripts/bootstrap.sh
+# 在 Claude Code 或 Cursor 终端中启动安装向导
+/setup
 ```
 
-就这么简单！脚本会自动安装 Homebrew、CLI 工具、应用程序、字体以及 Oh-My-Zsh 和插件。
-
-### 可选参数
+AI 向导会：
+1. **检测** 系统已安装的软件
+2. **询问** 你的偏好（角色、语言、应用）
+3. **生成** 定制化的安装计划
+4. **执行** 分步安装并跟踪进度
 
 ```bash
-# 标准安装（推荐）
-./scripts/bootstrap.sh
+# 使用默认配置快速安装
+/setup --quick
 
-# 包含 macOS 系统偏好设置优化
-./scripts/bootstrap.sh --with-macos-defaults
+# 使用预设（fullstack, frontend, backend, data, devops）
+/setup --preset fullstack
+
+# 预览安装计划（不实际安装）
+/setup --dry-run
 ```
+
+### 方式二：传统脚本安装
+
+```bash
+# 克隆仓库
+git clone https://github.com/larrykoo711/new-macos-starter.git
+cd new-macos-starter
+
+# 运行引导脚本（安装基础依赖）
+./scripts/bootstrap.sh
+```
+
+bootstrap.sh 会安装 Xcode CLI Tools、Rosetta 2（Apple Silicon）和 Homebrew。然后引导你使用 AI 向导 `/setup` 完成完整配置。
 
 ## 包含内容
 
@@ -71,7 +93,6 @@ cd new-macos-starter
 |------|------|
 | [Cursor](https://cursor.sh) | AI-first 代码编辑器（主力） |
 | [VS Code](https://code.visualstudio.com) | 备用编辑器 |
-| [JetBrains Toolbox](https://www.jetbrains.com/toolbox-app/) | JetBrains IDE 管理器 |
 
 ### Vibe Coding（AI 辅助编程）
 
@@ -95,6 +116,7 @@ cd new-macos-starter
 
 | 章节 | 说明 |
 |------|------|
+| [00. 故障排除](docs/00-troubleshooting.md) | 常见问题解决方案 |
 | [01. 系统设置](docs/01-system-setup.md) | 系统初始化配置 |
 | [02. Homebrew](docs/02-homebrew.md) | 包管理器安装 |
 | [03. Shell](docs/03-shell.md) | Zsh + Oh-My-Zsh 配置 |
@@ -109,40 +131,27 @@ cd new-macos-starter
 
 ```
 macOS-Starter/
+├── .claude/
+│   ├── commands/
+│   │   └── setup.md              # /setup 命令入口
+│   └── skills/
+│       └── macos-setup/          # AI 安装向导技能
+│           ├── SKILL.md          # 技能定义 + 问答流程
+│           ├── presets.md        # 角色预设（5 种配置）
+│           └── packages.md       # 完整包注册表
 ├── scripts/
-│   ├── bootstrap.sh          # 一键安装入口
-│   ├── Brewfile              # Homebrew 包定义（CLI、应用、字体）
-│   └── macos-defaults.sh     # macOS 系统偏好设置（可选）
+│   ├── bootstrap.sh              # 基础依赖安装（Homebrew）
+│   ├── verify.sh                 # 安装验证脚本
+│   └── Brewfile                  # Homebrew 包定义
 ├── configs/
-│   ├── shell/                # .zshrc, .zprofile
-│   ├── git/                  # .gitconfig, .gitignore_global
-│   ├── editors/              # VS Code 设置, Biome 配置
-│   └── terminal/             # Starship 提示符配置
-└── docs/                     # 分步指南（01-09）
+│   ├── shell/                    # .zshrc, .zprofile
+│   ├── git/                      # .gitconfig, .gitignore_global
+│   ├── editors/                  # VS Code 设置, Biome 配置
+│   └── terminal/                 # Starship 提示符配置
+└── docs/                         # 分步指南（01-09）
 ```
 
 ## 自定义
-
-### 使用 Brewfile
-
-编辑 `scripts/Brewfile` 来添加或删除包：
-
-```ruby
-# 添加 CLI 工具
-brew "your-tool"
-
-# 添加应用
-cask "your-app"
-
-# 添加字体
-cask "font-your-font"
-```
-
-然后运行：
-
-```bash
-brew bundle install --file=scripts/Brewfile
-```
 
 ### 安装后配置
 
@@ -162,6 +171,14 @@ git config --global user.email "your.email@example.com"
 ```
 
 详细指南请参阅 [文档](docs/)。
+
+### 验证安装
+
+安装完成后，验证所有工具是否正确安装：
+
+```bash
+./scripts/verify.sh
+```
 
 ## 测试环境
 

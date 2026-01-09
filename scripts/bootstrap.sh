@@ -1,9 +1,9 @@
 #!/bin/bash
 #
 # macOS Starter - Bootstrap Script
-# One-click installation of development environment
+# Minimal setup: Xcode CLI + Homebrew + AI Tools
 #
-# Usage: ./bootstrap.sh [--with-macos-defaults]
+# Usage: ./bootstrap.sh
 #
 set -e
 
@@ -18,8 +18,6 @@ log_info() { echo -e "${BLUE}[INFO]${NC} $1"; }
 log_success() { echo -e "${GREEN}[OK]${NC} $1"; }
 log_warning() { echo -e "${YELLOW}[WARN]${NC} $1"; }
 log_error() { echo -e "${RED}[ERROR]${NC} $1"; }
-
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Header
 print_header() {
@@ -37,6 +35,44 @@ check_macos() {
         exit 1
     fi
     log_success "macOS $(sw_vers -productVersion)"
+}
+
+# Check network connectivity
+check_network() {
+    log_info "Checking network connectivity..."
+
+    local github_ok=false
+    local homebrew_ok=false
+
+    if curl -s --connect-timeout 5 https://github.com > /dev/null 2>&1; then
+        github_ok=true
+        log_success "GitHub: accessible"
+    else
+        log_warning "GitHub: not accessible"
+    fi
+
+    if curl -s --connect-timeout 5 https://raw.githubusercontent.com > /dev/null 2>&1; then
+        homebrew_ok=true
+        log_success "Homebrew sources: accessible"
+    else
+        log_warning "Homebrew sources: not accessible"
+    fi
+
+    if [[ "$github_ok" == false ]] || [[ "$homebrew_ok" == false ]]; then
+        echo ""
+        log_warning "Network issues detected. You may need to configure a proxy."
+        echo ""
+        echo "  To set proxy for this session:"
+        echo "    export http_proxy=\"http://127.0.0.1:7890\""
+        echo "    export https_proxy=\"http://127.0.0.1:7890\""
+        echo ""
+        read -p "Continue anyway? [y/N] " -n 1 -r
+        echo ""
+        if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+            log_info "Please configure your network and try again."
+            exit 0
+        fi
+    fi
 }
 
 # Check architecture and set Homebrew prefix
@@ -95,97 +131,50 @@ install_homebrew() {
     fi
 }
 
-# Install packages from Brewfile
-install_brew_packages() {
-    if [[ -f "$SCRIPT_DIR/Brewfile" ]]; then
-        log_info "Installing packages from Brewfile..."
-        brew bundle install --file="$SCRIPT_DIR/Brewfile"
-        log_success "Brew packages installed"
-    else
-        log_error "Brewfile not found at $SCRIPT_DIR/Brewfile"
-        exit 1
-    fi
-}
-
-# Setup Oh-My-Zsh (optional, for users who want it)
-setup_ohmyzsh() {
-    if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
-        log_info "Installing Oh-My-Zsh..."
-        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-
-        # Install plugins
-        ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
-
-        if [[ ! -d "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ]]; then
-            git clone https://github.com/zsh-users/zsh-autosuggestions "$ZSH_CUSTOM/plugins/zsh-autosuggestions"
-        fi
-
-        if [[ ! -d "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" ]]; then
-            git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting"
-        fi
-
-        log_success "Oh-My-Zsh installed with plugins"
-    else
-        log_success "Oh-My-Zsh already installed"
-    fi
-}
-
-# Apply macOS defaults
-apply_macos_defaults() {
-    if [[ -f "$SCRIPT_DIR/macos-defaults.sh" ]]; then
-        log_info "Applying macOS defaults..."
-        bash "$SCRIPT_DIR/macos-defaults.sh"
-        log_success "macOS defaults applied"
-    fi
-}
-
-# Cleanup
-cleanup() {
-    log_info "Cleaning up..."
-    brew cleanup
-    log_success "Cleanup complete"
-}
-
-# Print summary
+# Print next steps
 print_summary() {
     echo ""
     echo "================================================"
-    echo "              Setup Complete!"
+    echo "         Prerequisites Complete!"
     echo "================================================"
     echo ""
     echo "Installed:"
-    echo "  - Homebrew + all packages from Brewfile"
-    echo "  - Programming fonts"
-    echo "  - Oh-My-Zsh with plugins"
+    echo "  - Xcode Command Line Tools"
+    echo "  - Rosetta 2 (Apple Silicon)"
+    echo "  - Homebrew"
     echo ""
-    echo "Next steps:"
-    echo "  1. Restart terminal: source ~/.zshrc"
-    echo "  2. Setup Node.js:    fnm install --lts && fnm default lts-latest"
-    echo "  3. Setup Python:     uv python install 3.12"
-    echo "  4. Configure Git:    See docs/05-dev-environment.md"
+    echo "=============================================="
+    echo "  NEXT: AI-Powered Interactive Setup"
+    echo "=============================================="
     echo ""
-    echo "See docs/ for detailed configuration guides."
+    echo "Option 1: Claude Code (Recommended)"
+    echo "  brew install --cask claude-code"
+    echo "  cd $(pwd)"
+    echo "  claude"
+    echo "  # Then type: /setup"
+    echo ""
+    echo "Option 2: Cursor"
+    echo "  brew install --cask cursor"
+    echo "  # Open this folder in Cursor"
+    echo "  # In terminal, type: /setup"
+    echo ""
+    echo "The AI wizard will:"
+    echo "  1. Detect what's already installed"
+    echo "  2. Ask your preferences (role, languages, apps)"
+    echo "  3. Generate a customized plan"
+    echo "  4. Execute step-by-step with progress tracking"
     echo ""
 }
 
 # Main
 main() {
     print_header
-
     check_macos
     check_arch
+    check_network
     install_xcode_cli
     install_rosetta
     install_homebrew
-    install_brew_packages
-    setup_ohmyzsh
-
-    # Apply macOS defaults if requested
-    if [[ "$1" == "--with-macos-defaults" ]]; then
-        apply_macos_defaults
-    fi
-
-    cleanup
     print_summary
 }
 

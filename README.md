@@ -22,26 +22,49 @@ Ship Fast. Break Things. Fix Faster.
 
 ## Quick Start
 
+### Option 1: AI-Powered Interactive Setup (Recommended)
+
+Use [Claude Code](https://claude.ai/claude-code) or [Cursor](https://cursor.sh) for a personalized, conversational setup experience:
+
 ```bash
 # Clone this repo
 git clone https://github.com/larrykoo711/new-macos-starter.git
 cd new-macos-starter
 
-# Run the bootstrap script
-./scripts/bootstrap.sh
+# Start the interactive setup wizard
+# In Claude Code or Cursor terminal:
+/setup
 ```
 
-That's it! The script will install Homebrew, CLI tools, applications, fonts, and Oh-My-Zsh with plugins.
-
-### Options
+The AI wizard will:
+1. **Detect** what's already installed on your system
+2. **Ask** your preferences (role, languages, apps)
+3. **Generate** a customized installation plan
+4. **Execute** step-by-step with progress tracking
 
 ```bash
-# Standard installation (recommended)
-./scripts/bootstrap.sh
+# Quick setup with sensible defaults
+/setup --quick
 
-# Include macOS system preferences optimization
-./scripts/bootstrap.sh --with-macos-defaults
+# Use a preset (fullstack, frontend, backend, data, devops)
+/setup --preset fullstack
+
+# Preview plan without installing
+/setup --dry-run
 ```
+
+### Option 2: Traditional Bootstrap Script
+
+```bash
+# Clone this repo
+git clone https://github.com/larrykoo711/new-macos-starter.git
+cd new-macos-starter
+
+# Run the bootstrap script (installs prerequisites only)
+./scripts/bootstrap.sh
+```
+
+The bootstrap script will install Xcode CLI Tools, Rosetta 2 (if Apple Silicon), and Homebrew. Then it guides you to use the AI-powered `/setup` command for complete configuration.
 
 ## What's Inside
 
@@ -71,7 +94,6 @@ That's it! The script will install Homebrew, CLI tools, applications, fonts, and
 |------|-------------|
 | [Cursor](https://cursor.sh) | AI-first code editor (primary) |
 | [VS Code](https://code.visualstudio.com) | Backup editor |
-| [JetBrains Toolbox](https://www.jetbrains.com/toolbox-app/) | JetBrains IDE manager |
 
 ### Vibe Coding (AI-Assisted Programming)
 
@@ -95,6 +117,7 @@ That's it! The script will install Homebrew, CLI tools, applications, fonts, and
 
 | Chapter | Description |
 |---------|-------------|
+| [00. Troubleshooting](docs/00-troubleshooting.md) | Common issues and solutions |
 | [01. System Setup](docs/01-system-setup.md) | Initial system configuration |
 | [02. Homebrew](docs/02-homebrew.md) | Package manager installation |
 | [03. Shell](docs/03-shell.md) | Zsh + Oh-My-Zsh configuration |
@@ -109,40 +132,27 @@ That's it! The script will install Homebrew, CLI tools, applications, fonts, and
 
 ```
 macOS-Starter/
+├── .claude/
+│   ├── commands/
+│   │   └── setup.md              # /setup command entry point
+│   └── skills/
+│       └── macos-setup/          # AI setup wizard skill
+│           ├── SKILL.md          # Skill definition + Q&A flow
+│           ├── presets.md        # Role-based presets (5 profiles)
+│           └── packages.md       # Complete package registry
 ├── scripts/
-│   ├── bootstrap.sh          # One-click installation entry point
-│   ├── Brewfile              # Homebrew packages (CLI, Apps, Fonts)
-│   └── macos-defaults.sh     # macOS system preferences (optional)
+│   ├── bootstrap.sh              # Prerequisites installer (Homebrew)
+│   ├── verify.sh                 # Installation verification script
+│   └── Brewfile                  # Homebrew package definitions
 ├── configs/
-│   ├── shell/                # .zshrc, .zprofile
-│   ├── git/                  # .gitconfig, .gitignore_global
-│   ├── editors/              # VS Code settings, Biome config
-│   └── terminal/             # Starship prompt config
-└── docs/                     # Step-by-step guides (01-09)
+│   ├── shell/                    # .zshrc (optimized), .zprofile
+│   ├── git/                      # .gitconfig, .gitignore_global
+│   ├── editors/                  # VS Code settings, Biome config
+│   └── terminal/                 # Starship prompt config
+└── docs/                         # Detailed reference guides (01-09)
 ```
 
 ## Customization
-
-### Using the Brewfile
-
-Edit `scripts/Brewfile` to add or remove packages:
-
-```ruby
-# Add a CLI tool
-brew "your-tool"
-
-# Add an application
-cask "your-app"
-
-# Add a font
-cask "font-your-font"
-```
-
-Then run:
-
-```bash
-brew bundle install --file=scripts/Brewfile
-```
 
 ### Post-Installation Setup
 
@@ -162,6 +172,14 @@ git config --global user.email "your.email@example.com"
 ```
 
 See the [documentation](docs/) for detailed guides.
+
+### Verify Installation
+
+After setup, verify all tools are properly installed:
+
+```bash
+./scripts/verify.sh
+```
 
 ## Tested Environment
 

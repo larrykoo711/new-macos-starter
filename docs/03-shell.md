@@ -2,6 +2,22 @@
 
 > Zsh + Oh-My-Zsh + Starship - 现代化 Shell 体验
 
+**图例**: 🆓 免费开源 | 💰 付费 | 🔄 Freemium | 📦 Homebrew 可安装
+
+---
+
+## 工具总览
+
+| 工具 | 说明 | 定价 | 安装方式 |
+|------|------|------|----------|
+| **Zsh** | 现代 Shell | 🆓 系统内置 | macOS 默认 |
+| **Oh-My-Zsh** | Zsh 配置框架 | 🆓 开源免费 | 安装脚本 |
+| **Starship** | 跨 Shell 提示符 | 🆓 开源免费 | 📦 `brew install starship` |
+| **zsh-autosuggestions** | 命令建议 | 🆓 开源免费 | Git clone |
+| **zsh-syntax-highlighting** | 语法高亮 | 🆓 开源免费 | Git clone |
+
+---
+
 ## Zsh Setup
 
 macOS 默认 Shell 已经是 Zsh。验证：
@@ -12,6 +28,8 @@ echo $SHELL
 ```
 
 ## Oh-My-Zsh
+
+> 🆓 **开源免费** | [官网](https://ohmyz.sh) | [GitHub](https://github.com/ohmyzsh/ohmyzsh)
 
 ### Installation
 
@@ -60,7 +78,13 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 ZSH_THEME="agnoster"  # 或 "robbyrussell", "powerlevel10k"
 ```
 
+---
+
 ## Starship Prompt
+
+> 🆓 **开源免费** | 📦 Homebrew | [官网](https://starship.rs) | [GitHub](https://github.com/starship/starship)
+
+跨 Shell 的现代化提示符，Rust 构建，极速启动。
 
 ### Installation
 
@@ -137,6 +161,8 @@ format = "[$symbol$context]($style) "
 success_symbol = "[❯](bold green)"
 error_symbol = "[❯](bold red)"
 ```
+
+---
 
 ## Zsh Configuration
 
@@ -221,18 +247,27 @@ export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 ```
 
+---
+
 ## Modern CLI Tools
 
-用现代工具替代传统命令：
+> 用现代工具替代传统命令
 
-| 传统命令 | 现代替代 | 安装 |
-|---------|---------|------|
-| `ls` | `eza` | `brew install eza` |
-| `cat` | `bat` | `brew install bat` |
-| `find` | `fd` | `brew install fd` |
-| `grep` | `ripgrep` | `brew install ripgrep` |
-| `cd` | `z` | oh-my-zsh plugin |
-| `top` | `bottom` | `brew install bottom` |
+| 传统命令 | 现代替代 | 说明 | 定价 | 安装方式 |
+|---------|---------|------|------|----------|
+| `ls` | **eza** | 更好的文件列表 | 🆓 开源免费 | 📦 `brew install eza` |
+| `cat` | **bat** | 语法高亮查看 | 🆓 开源免费 | 📦 `brew install bat` |
+| `find` | **fd** | 快速文件搜索 | 🆓 开源免费 | 📦 `brew install fd` |
+| `grep` | **ripgrep** | 极速文本搜索 | 🆓 开源免费 | 📦 `brew install ripgrep` |
+| `cd` | **z** | 智能目录跳转 | 🆓 开源免费 | oh-my-zsh plugin |
+| `top` | **bottom** | 系统监控 TUI | 🆓 开源免费 | 📦 `brew install bottom` |
+
+```bash
+# 一键安装现代 CLI 工具
+brew install eza bat fd ripgrep bottom
+```
+
+---
 
 ## Tips
 
@@ -245,6 +280,8 @@ z -l         # 列出所有记录的目录
 ```
 
 ### 命令历史搜索
+
+> 🆓 **fzf** - 开源免费 | 📦 Homebrew
 
 ```bash
 # Ctrl + R 搜索历史
@@ -265,6 +302,32 @@ mkcd() {
 gcm() {
     git add -A && git commit -m "$1"
 }
+```
+
+---
+
+## 快速安装脚本
+
+```bash
+#!/bin/bash
+# install-shell.sh
+
+# Oh-My-Zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# Starship
+brew install starship
+
+# 插件
+ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
+git clone https://github.com/zsh-users/zsh-autosuggestions "$ZSH_CUSTOM/plugins/zsh-autosuggestions"
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting"
+
+# 现代 CLI 工具
+brew install eza bat fd ripgrep bottom fzf
+
+echo "Shell setup complete!"
+echo "Add 'eval \"\$(starship init zsh)\"' to your ~/.zshrc"
 ```
 
 ## Next Steps

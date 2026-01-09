@@ -2,7 +2,13 @@
 
 > macOS 的包管理器 - 一切的基础
 
+**图例**: 🆓 免费开源 | 💰 付费 | 🔄 Freemium | 📦 Homebrew 可安装
+
+---
+
 ## Installation
+
+> 🆓 **开源免费** | [官网](https://brew.sh) | [GitHub](https://github.com/Homebrew/brew)
 
 ```bash
 # 安装 Homebrew
@@ -39,38 +45,52 @@ export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles"
 EOF
 ```
 
+---
+
 ## Essential Formulae
 
 ### Development Tools
 
+| 工具 | 说明 | 定价 | 安装方式 |
+|------|------|------|----------|
+| **git** | 版本控制 | 🆓 开源免费 | 📦 `brew install git` |
+| **gh** | GitHub CLI | 🆓 开源免费 | 📦 `brew install gh` |
+| **delta** | 更好的 diff | 🆓 开源免费 | 📦 `brew install delta` |
+| **starship** | 现代化提示符 | 🆓 开源免费 | 📦 `brew install starship` |
+| **eza** | 更好的 ls | 🆓 开源免费 | 📦 `brew install eza` |
+| **bat** | 更好的 cat | 🆓 开源免费 | 📦 `brew install bat` |
+| **fd** | 更好的 find | 🆓 开源免费 | 📦 `brew install fd` |
+| **ripgrep** | 更好的 grep | 🆓 开源免费 | 📦 `brew install ripgrep` |
+| **bottom** | 系统监控 TUI | 🆓 开源免费 | 📦 `brew install bottom` |
+| **jq** | JSON 处理 | 🆓 开源免费 | 📦 `brew install jq` |
+| **yq** | YAML 处理 | 🆓 开源免费 | 📦 `brew install yq` |
+| **autojump** | 目录快速跳转 | 🆓 开源免费 | 📦 `brew install autojump` |
+
 ```bash
 # 版本控制
-brew install git
-brew install gh              # GitHub CLI
-brew install delta           # Better git diff
+brew install git gh delta
 
 # Shell 增强
-brew install zsh
-brew install starship        # Modern prompt
+brew install starship autojump
 
 # 文件操作
-brew install tree
-brew install fd              # 更好的 find
-brew install ripgrep         # 更好的 grep
-brew install bat             # 更好的 cat
-brew install eza             # 更好的 ls
+brew install tree fd ripgrep bat eza
 
 # 系统监控
-brew install bottom          # 系统监控 TUI
+brew install bottom
 
 # 网络工具
-brew install curl
-brew install wget
-brew install jq
-brew install yq
+brew install curl wget jq yq
 ```
 
 ### Programming Languages
+
+| 工具 | 说明 | 定价 | 安装方式 |
+|------|------|------|----------|
+| **fnm** | Node.js 版本管理 | 🆓 开源免费 | 📦 `brew install fnm` |
+| **uv** | Python 环境管理 | 🆓 开源免费 | 📦 `brew install uv` |
+| **goenv** | Go 版本管理 | 🆓 开源免费 | 📦 `brew install goenv` |
+| **go** | Go 语言 | 🆓 开源免费 | 📦 `brew install go` |
 
 ```bash
 # Node.js 版本管理
@@ -80,18 +100,22 @@ brew install fnm
 brew install uv
 
 # Go
-brew install goenv
-brew install go
+brew install goenv go
 ```
 
 ### Container & Kubernetes
 
+| 工具 | 说明 | 定价 | 安装方式 |
+|------|------|------|----------|
+| **kubectl** | K8s CLI | 🆓 开源免费 | 📦 `brew install kubectl` |
+| **helm** | K8s 包管理 | 🆓 开源免费 | 📦 `brew install helm` |
+| **k9s** | K8s TUI | 🆓 开源免费 | 📦 `brew install k9s` |
+| **stern** | 多 Pod 日志 | 🆓 开源免费 | 📦 `brew install stern` |
+| **kubeswitch** | Context 切换 | 🆓 开源免费 | 📦 需先 tap |
+
 ```bash
 # Kubernetes CLI
-brew install kubectl
-brew install helm
-brew install k9s              # K8s TUI
-brew install stern            # 多 Pod 日志
+brew install kubectl helm k9s stern
 
 # kubeswitch (context 切换，比 kubectx 更强大)
 brew tap danielfoehrkn/switch
@@ -99,6 +123,13 @@ brew install danielfoehrkn/switch/switch
 ```
 
 ### Cloud & Platform CLI
+
+| 工具 | 说明 | 定价 | 安装方式 |
+|------|------|------|----------|
+| **awscli** | AWS CLI | 🆓 免费 (AWS 收费) | 📦 `brew install awscli` |
+| **google-cloud-sdk** | GCP CLI | 🆓 免费 (GCP 收费) | 📦 `brew install google-cloud-sdk` |
+| **azure-cli** | Azure CLI | 🆓 免费 (Azure 收费) | 📦 `brew install azure-cli` |
+| **rclone** | 通用云存储 | 🆓 开源免费 | 📦 `brew install rclone` |
 
 ```bash
 # Cloud Providers
@@ -114,95 +145,123 @@ pnpm add -g wrangler                    # Cloudflare Workers
 brew install rclone                     # 通用云存储 CLI
 ```
 
+---
+
 ## Cask Applications
 
 ### 必装应用
 
+| App | 说明 | 定价 | 安装方式 |
+|-----|------|------|----------|
+| **Raycast** | Spotlight 替代 + 窗口管理 | 🔄 基础免费/Pro $8/月 | 📦 `brew install --cask raycast` |
+| **1Password** | 密码管理 | 💰 $2.99/月起 | 📦 `brew install --cask 1password` |
+| **Google Chrome** | 浏览器 | 🆓 免费 | 📦 `brew install --cask google-chrome` |
+| **KeepingYouAwake** | 防休眠 | 🆓 开源免费 | 📦 `brew install --cask keepingyouawake` |
+| **Keka** | 解压缩 | 🆓 开源/AppStore $5.99 | 📦 `brew install --cask keka` |
+| **AppCleaner** | 应用卸载 | 🆓 免费 | 📦 `brew install --cask appcleaner` |
+
 ```bash
-brew install --cask raycast          # Spotlight + 窗口管理
-brew install --cask 1password        # 密码管理
-brew install --cask google-chrome    # 浏览器
-brew install --cask keepingyouawake  # 防休眠
-brew install --cask keka             # 解压缩
-brew install --cask appcleaner       # 应用卸载
+brew install --cask raycast 1password google-chrome
+brew install --cask keepingyouawake keka appcleaner
 ```
 
 ### 开发工具
 
+| App | 说明 | 定价 | 安装方式 |
+|-----|------|------|----------|
+| **Cursor** | AI 编辑器 (主力) | 🔄 Freemium/$20月 Pro | 📦 `brew install --cask cursor` |
+| **VS Code** | 代码编辑器 | 🆓 免费 | 📦 `brew install --cask visual-studio-code` |
+| **Warp** | AI 终端 | 🔄 基础免费/Team 付费 | 📦 `brew install --cask warp` |
+| **OrbStack** | Docker/K8s | 🔄 个人免费/Pro $8/月 | 📦 `brew install --cask orbstack` |
+| **Apifox** | API 开发 | 🔄 基础免费/Team 付费 | 📦 `brew install --cask apifox` |
+| **Proxyman** | HTTP 调试 | 🔄 基础免费/$59 永久 | 📦 `brew install --cask proxyman` |
+| **Sourcetree** | Git GUI | 🆓 免费 | 📦 `brew install --cask sourcetree` |
+
 ```bash
-brew install --cask cursor           # AI 编辑器 (主力)
-brew install --cask visual-studio-code
-brew install --cask warp             # AI 终端
-brew install --cask orbstack         # Docker/K8s
-brew install --cask apifox           # API 开发
-brew install --cask proxyman         # HTTP 调试
-brew install --cask sourcetree       # Git GUI
-brew install --cask jetbrains-toolbox
+brew install --cask cursor visual-studio-code
+brew install --cask warp orbstack
+brew install --cask apifox proxyman sourcetree
 ```
 
 ### 设计 & 媒体
 
+| App | 说明 | 定价 | 安装方式 |
+|-----|------|------|----------|
+| **IINA** | 视频播放器 | 🆓 开源免费 | 📦 `brew install --cask iina` |
+| **ImageOptim** | 图片压缩 | 🆓 开源免费 | 📦 `brew install --cask imageoptim` |
+
 ```bash
-brew install --cask iina             # 视频播放
-brew install --cask imageoptim       # 图片压缩
-brew install --cask eagle            # 素材管理
+brew install --cask iina imageoptim
 ```
 
 ### 工作 & 协作
 
+| App | 说明 | 定价 | 安装方式 |
+|-----|------|------|----------|
+| **飞书 (Lark)** | 字节办公套件 | 🔄 基础免费/企业付费 | 📦 `brew install --cask lark` |
+| **钉钉** | 阿里办公套件 | 🔄 基础免费/企业付费 | 📦 `brew install --cask dingtalk` |
+| **企业微信** | 腾讯企业通讯 | 🔄 基础免费/企业付费 | 📦 `brew install --cask wecom` |
+| **微信** | 个人通讯 | 🆓 免费 | 📦 `brew install --cask wechat` |
+| **Discord** | 社区/游戏语音 | 🔄 基础免费/Nitro $9.99/月 | 📦 `brew install --cask discord` |
+| **WhatsApp** | 国际通讯 | 🆓 免费 | 📦 `brew install --cask whatsapp` |
+| **腾讯会议** | 视频会议 | 🔄 基础免费/企业付费 | 📦 `brew install --cask tencent-meeting` |
+| **Notion** | 笔记/知识库 | 🔄 基础免费/Plus $8/月 | 📦 `brew install --cask notion` |
+
 ```bash
-brew install --cask lark             # 飞书
-brew install --cask dingtalk         # 钉钉
-brew install --cask wecom            # 企业微信
-brew install --cask wechat           # 微信
-brew install --cask discord
-brew install --cask whatsapp
-brew install --cask tencent-meeting  # 腾讯会议
+brew install --cask lark dingtalk wecom wechat
+brew install --cask discord whatsapp tencent-meeting
 brew install --cask notion
 ```
 
 ### AI 工具
 
+| App | 说明 | 定价 | 安装方式 |
+|-----|------|------|----------|
+| **Claude Code** | Anthropic AI CLI | 🔄 API 付费 | 📦 `brew install --cask claude-code` |
+| **LM Studio** | 本地大模型 | 🆓 免费 | 📦 `brew install --cask lm-studio` |
+
 ```bash
-brew install --cask lm-studio        # 本地大模型
+brew install --cask claude-code lm-studio
 ```
 
 ### 系统增强
 
+| App | 说明 | 定价 | 安装方式 |
+|-----|------|------|----------|
+| **iStat Menus** | 系统监控 | 💰 $9.99/SetApp | 📦 `brew install --cask istat-menus` |
+| **coconutBattery** | 电池监控 | 🔄 基础免费/Plus €9.95 | 📦 `brew install --cask coconutbattery` |
+| **MonitorControl** | 外接显示器亮度 | 🆓 开源免费 | 📦 `brew install --cask monitorcontrol` |
+| **Gas Mask** | Hosts 管理 | 🆓 开源免费 | 📦 `brew install --cask gas-mask` |
+| **balenaEtcher** | 启动盘制作 | 🆓 开源免费 | 📦 `brew install --cask balenaetcher` |
+| **OpenInTerminal-Lite** | Finder 打开终端 | 🆓 开源免费 | 📦 `brew install --cask openinterminal-lite` |
+| **QLMarkdown** | Markdown 预览 | 🆓 开源免费 | 📦 `brew install --cask qlmarkdown` |
+| **Syntax Highlight** | 代码预览 | 🆓 开源免费 | 📦 `brew install --cask syntax-highlight` |
+
 ```bash
-brew install --cask istat-menus      # 系统监控
-brew install --cask coconutbattery   # 电池监控
-brew install --cask monitorcontrol   # 外接显示器亮度
-brew install --cask gas-mask         # Hosts 管理
-brew install --cask balenaetcher     # 启动盘制作
-brew install --cask openinterminal-lite
-brew install --cask qlmarkdown
-brew install --cask syntax-highlight
+brew install --cask istat-menus coconutbattery monitorcontrol
+brew install --cask gas-mask balenaetcher openinterminal-lite
+brew install --cask qlmarkdown syntax-highlight
 ```
 
 ### 其他
 
 ```bash
-brew install --cask neteasemusic     # 网易云音乐
+brew install --cask neteasemusic     # 网易云音乐 (🔄 基础免费/会员付费)
 ```
+
+---
 
 ## Taps
 
 ```bash
 # 添加额外的仓库
-brew tap homebrew/cask-fonts
 brew tap homebrew/services
 brew tap danielfoehrkn/switch        # kubeswitch
 ```
 
-## Brewfile
+> **注意**: `homebrew/cask-fonts` 已弃用，字体 cask 现已合并到主仓库。
 
-创建 `Brewfile` 用于批量安装 (详见 `scripts/Brewfile`)：
-
-```bash
-# 安装所有内容
-brew bundle install --file=scripts/Brewfile
-```
+---
 
 ## Maintenance
 

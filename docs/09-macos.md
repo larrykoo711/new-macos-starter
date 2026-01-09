@@ -2,6 +2,18 @@
 
 > 系统优化配置 - 让 Mac 更适合开发
 
+**图例**: 🆓 免费开源 | 💰 付费 | 🔄 Freemium | 📦 Homebrew 可安装
+
+---
+
+## 辅助工具
+
+| 工具 | 说明 | 定价 | 安装方式 |
+|------|------|------|----------|
+| **ncdu** | 磁盘使用分析 | 🆓 开源免费 | 📦 `brew install ncdu` |
+
+---
+
 ## Finder 配置
 
 ### 显示设置
@@ -35,6 +47,8 @@ defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 killall Finder
 ```
 
+---
+
 ## Dock 配置
 
 ```bash
@@ -58,6 +72,8 @@ defaults write com.apple.dock mineffect -string "scale"
 killall Dock
 ```
 
+---
+
 ## 键盘配置
 
 ```bash
@@ -78,7 +94,12 @@ defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 
 # 禁用智能破折号
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+
+# 禁用长按弹出字符选择 (启用按键重复)
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 ```
+
+---
 
 ## 触控板配置
 
@@ -93,6 +114,8 @@ defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool t
 # 提高触控板跟踪速度
 defaults write NSGlobalDomain com.apple.trackpad.scaling -float 2.0
 ```
+
+---
 
 ## 截图配置
 
@@ -111,6 +134,8 @@ defaults write com.apple.screencapture disable-shadow -bool true
 killall SystemUIServer
 ```
 
+---
+
 ## Safari 配置 (开发者)
 
 ```bash
@@ -123,6 +148,8 @@ defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool 
 # 在所有网页视图中启用 Web 检查器
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 ```
+
+---
 
 ## 系统性能优化
 
@@ -139,10 +166,9 @@ defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
 
 # 禁用 Crash Reporter
 defaults write com.apple.CrashReporter DialogType -string "none"
-
-# 禁用智能放大镜
-defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 ```
+
+---
 
 ## 安全配置
 
@@ -160,6 +186,8 @@ csrutil status
 spctl --status
 ```
 
+---
+
 ## 隐私配置
 
 ```bash
@@ -167,6 +195,8 @@ spctl --status
 defaults write com.apple.SubmitDiagInfo AutoSubmit -bool false
 defaults write com.apple.SubmitDiagInfo AutoSubmitVersion -int 0
 ```
+
+---
 
 ## 开发者友好设置
 
@@ -180,6 +210,8 @@ defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 # 始终显示用户目录
 chflags nohidden ~/Library
 ```
+
+---
 
 ## 完整配置脚本
 
@@ -217,6 +249,7 @@ defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
 # Trackpad
 defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
@@ -233,7 +266,6 @@ defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool 
 
 # Performance
 defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
-defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
 # Security
 sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on
@@ -246,6 +278,8 @@ killall SystemUIServer
 echo "macOS configuration complete!"
 echo "Some changes may require logout/restart to take effect."
 ```
+
+---
 
 ## 恢复默认设置
 
@@ -262,6 +296,8 @@ defaults delete com.apple.finder
 killall Finder
 ```
 
+---
+
 ## 查看当前设置
 
 ```bash
@@ -274,6 +310,8 @@ defaults read com.apple.dock autohide
 # 查看全局设置
 defaults read NSGlobalDomain
 ```
+
+---
 
 ## Tips
 
@@ -303,7 +341,7 @@ sudo mdutil -E /
 # 内置命令
 du -sh ~/Documents/*
 
-# 或使用 ncdu
+# 或使用 ncdu (🆓 开源免费)
 brew install ncdu
 ncdu /
 ```
@@ -312,4 +350,16 @@ ncdu /
 
 **恭喜！** 你已完成 macOS 开发环境的完整配置。
 
-如需更多帮助，请访问 [GitHub Issues](https://github.com/yourusername/macOS-Starter/issues)。
+---
+
+## 验证安装
+
+运行验证脚本确认所有工具已正确安装：
+
+```bash
+./scripts/verify.sh
+```
+
+---
+
+如需更多帮助，请查看 [故障排除指南](00-troubleshooting.md) 或访问 [GitHub Issues](https://github.com/larrykoo711/new-macos-starter/issues)。

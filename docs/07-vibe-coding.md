@@ -11,20 +11,38 @@ Vibe Coding 是一种全新的编程范式，通过与 AI 对话来完成编码�
 - **迭代优化** - 通过对话不断改进代码
 - **学习加速** - 在实践中学习最佳实践
 
+---
+
+## 工具总览
+
+| 工具 | 类型 | 定价 | 安装方式 |
+|------|------|------|----------|
+| [Claude Code](#claude-code) | Terminal CLI | 🔄 API 付费 | 📦 `brew install --cask claude-code` |
+| [Cursor](#cursor) | GUI Editor | 🔄 Freemium ($20/月 Pro) | 📦 `brew install --cask cursor` |
+| [OpenCode](#opencode) | Terminal CLI | 🆓 开源 + API 付费 | 📦 `brew install opencode` |
+| [CCometixLine](#ccometixline) | CLI 增强 | 🆓 开源免费 | `npm install -g @cometix/ccline` |
+| [Cherry Studio](#cherry-studio) | GUI Client | 🆓 开源免费 | 📦 `brew install --cask cherry-studio` |
+
+**图例**: 🆓 免费开源 | 💰 付费 | 🔄 Freemium | 📦 Homebrew 可安装
+
+---
+
 ## 核心工具
 
 ### Claude Code
+
+> 🔄 **Freemium** (需 Anthropic API) | 📦 Homebrew | [官网](https://claude.ai/claude-code)
 
 Anthropic 官方 CLI 工具，直接在终端中与 Claude 交互。
 
 #### 安装
 
 ```bash
-# 使用 npm 安装
-npm install -g @anthropic-ai/claude-code
+# 方式 1: Homebrew Cask (推荐)
+brew install --cask claude-code
 
-# 或使用 Homebrew
-brew install claude
+# 方式 2: 原生安装脚本
+curl -fsSL https://claude.ai/install.sh | bash
 ```
 
 #### 配置
@@ -83,7 +101,9 @@ claude --model claude-sonnet-4-20250514
 
 ### Cursor
 
-AI-first 代码编辑器，基于 VS Code 构建。
+> 🔄 **Freemium** ($20/月 Pro) | 📦 Homebrew | [官网](https://cursor.sh)
+
+AI-first 代码编辑器，基于 VS Code 构建。由 Anysphere 公司开发。
 
 #### 安装
 
@@ -145,7 +165,9 @@ Testing:
 
 ### OpenCode
 
-开源的终端 AI 编程助手，使用 Go 构建。
+> 🆓 **开源免费** (需 API Key) | 📦 Homebrew | [GitHub](https://github.com/opencode-ai/opencode)
+
+开源的终端 AI 编程助手，使用 Go 构建。支持多种 LLM 提供商。
 
 #### 安装
 
@@ -188,6 +210,69 @@ theme: dark
 # 自动保存
 auto_save: true
 ```
+
+---
+
+### CCometixLine
+
+> 🆓 **开源免费** | npm | [GitHub](https://github.com/Haleclipse/CCometixLine)
+
+Claude Code 的 statusline 增强工具，使用 Rust 构建，提供 Git 集成和上下文显示。
+
+#### 安装
+
+```bash
+# 需要 Node.js
+npm install -g @cometix/ccline
+```
+
+#### 配置
+
+编辑 `~/.claude/settings.json`:
+
+```json
+{
+  "statusLine": {
+    "type": "command",
+    "command": "ccline",
+    "padding": 0
+  }
+}
+```
+
+或使用 TUI 配置界面:
+
+```bash
+ccline config
+```
+
+#### 功能
+
+- Git 分支和仓库状态显示
+- 当前 Claude 模型名称
+- 上下文窗口使用率百分比
+- 工作目录路径
+
+---
+
+### Cherry Studio
+
+> 🆓 **开源免费** | 📦 Homebrew | [GitHub](https://github.com/kangfenmao/cherry-studio)
+
+多模型 AI 桌面客户端，支持多种 LLM 服务商。跨平台支持 macOS/Windows/Linux。
+
+#### 安装
+
+```bash
+brew install --cask cherry-studio
+```
+
+#### 功能
+
+- 支持 OpenAI, Anthropic, Google 等多种模型
+- 本地模型支持 (Ollama)
+- 对话历史管理
+- 多会话支持
 
 ---
 
@@ -273,20 +358,24 @@ claude -p "为 src/utils/validator.ts 生成单元测试，
 
 ## 工具对比
 
-| 特性 | Claude Code | Cursor | OpenCode |
-|------|-------------|--------|----------|
-| **界面** | Terminal | GUI (VS Code) | Terminal |
-| **模型** | Claude 系列 | 多模型支持 | 多模型支持 |
-| **代码库理解** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
-| **适用场景** | 命令行/DevOps | 日常开发 | 开源替代 |
-| **定价** | API 付费 | 订阅制 | API 付费 |
-| **离线支持** | ❌ | ❌ | ❌ |
+| 特性 | Claude Code | Cursor | OpenCode | Cherry Studio |
+|------|-------------|--------|----------|---------------|
+| **界面** | Terminal | GUI (VS Code) | Terminal | GUI 客户端 |
+| **模型** | Claude 系列 | 多模型支持 | 多模型支持 | 多模型支持 |
+| **代码库理解** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ |
+| **适用场景** | 命令行/DevOps | 日常开发 | 开源替代 | 多模型对话 |
+| **定价** | 🔄 API 付费 | 🔄 $20/月 Pro | 🆓 + API | 🆓 免费 |
+| **离线支持** | ❌ | ❌ | ❌ | ✅ (本地模型) |
+| **开源** | ❌ | ❌ | ✅ | ✅ |
 
 ### 使用建议
 
-- **Claude Code**: 适合终端重度用户、DevOps 任务、代码审查
-- **Cursor**: 适合日常开发、需要 IDE 完整体验
-- **OpenCode**: 适合想要开源替代方案、自定义需求
+| 工具 | 最佳用例 |
+|------|----------|
+| **Claude Code** | 终端重度用户、DevOps 任务、代码审查、Agent 模式 |
+| **Cursor** | 日常开发、需要 IDE 完整体验、VS Code 用户迁移 |
+| **OpenCode** | 想要开源替代方案、自定义需求、多模型切换 |
+| **Cherry Studio** | 多模型对比测试、本地模型使用、非开发人员 |
 
 ---
 
@@ -329,14 +418,14 @@ export HTTPS_PROXY="http://127.0.0.1:7890"
 #!/bin/bash
 # install-vibe-coding.sh
 
-# Claude Code
-npm install -g @anthropic-ai/claude-code
+# Claude Code (推荐使用 Homebrew)
+brew install --cask claude-code
 
 # Cursor
 brew install --cask cursor
 
-# OpenCode
-brew install opencode
+# OpenCode (可选)
+# brew install opencode
 
 echo "Vibe Coding tools installed!"
 echo ""

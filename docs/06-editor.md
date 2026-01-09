@@ -2,7 +2,23 @@
 
 > 代码编辑器配置 - 生产力核心
 
+**图例**: 🆓 免费开源 | 💰 付费 | 🔄 Freemium | 📦 Homebrew 可安装
+
+---
+
+## 编辑器总览
+
+| 编辑器 | 说明 | 定价 | 安装方式 |
+|--------|------|------|----------|
+| **VS Code** | 微软代码编辑器 | 🆓 免费 | 📦 `brew install --cask visual-studio-code` |
+| **Cursor** | AI-first 编辑器 | 🔄 Freemium/$20月 Pro | 📦 `brew install --cask cursor` |
+| **Neovim** | 现代化 Vim | 🆓 开源免费 | 📦 `brew install neovim` |
+
+---
+
 ## VS Code
+
+> 🆓 **免费** | 📦 Homebrew | [官网](https://code.visualstudio.com)
 
 ### Installation
 
@@ -22,9 +38,18 @@ code -n .           # 新窗口打开
 code -d file1 file2 # 比较文件
 ```
 
+---
+
 ## Essential Extensions
 
 ### 核心扩展
+
+| 扩展 | 说明 | 定价 |
+|------|------|------|
+| **Biome** | Linter + Formatter | 🆓 开源免费 |
+| **GitLens** | Git 增强 | 🔄 Freemium |
+| **Error Lens** | 内联错误显示 | 🆓 开源免费 |
+| **Path Intellisense** | 路径补全 | 🆓 开源免费 |
 
 ```bash
 # Biome (Linter + Formatter)
@@ -41,6 +66,16 @@ code --install-extension christian-kohler.path-intellisense
 ```
 
 ### 语言支持
+
+| 扩展 | 语言 | 定价 |
+|------|------|------|
+| **ESLint** | JavaScript/TypeScript | 🆓 开源免费 |
+| **Tailwind CSS** | Tailwind CSS | 🆓 开源免费 |
+| **Python** | Python | 🆓 免费 |
+| **Ruff** | Python Linter | 🆓 开源免费 |
+| **Go** | Go 语言 | 🆓 免费 |
+| **Docker** | Docker | 🆓 免费 |
+| **YAML** | YAML | 🆓 免费 |
 
 ```bash
 # TypeScript/JavaScript
@@ -65,6 +100,12 @@ code --install-extension redhat.vscode-yaml
 
 ### 主题与图标
 
+| 扩展 | 说明 | 定价 |
+|------|------|------|
+| **One Dark Pro** | 流行暗色主题 | 🆓 开源免费 |
+| **Material Icon** | 文件图标主题 | 🆓 开源免费 |
+| **GitHub Theme** | GitHub 风格主题 | 🆓 开源免费 |
+
 ```bash
 # One Dark Pro
 code --install-extension zhuangtongfa.material-theme
@@ -77,6 +118,13 @@ code --install-extension github.github-vscode-theme
 ```
 
 ### 生产力
+
+| 扩展 | 说明 | 定价 |
+|------|------|------|
+| **Code Spell Checker** | 拼写检查 | 🆓 开源免费 |
+| **Todo Tree** | TODO 管理 | 🆓 开源免费 |
+| **Better Comments** | 注释增强 | 🆓 开源免费 |
+| **Bookmarks** | 代码书签 | 🆓 开源免费 |
 
 ```bash
 # Code Spell Checker
@@ -94,6 +142,11 @@ code --install-extension alefragnani.bookmarks
 
 ### AI 辅助
 
+| 扩展 | 说明 | 定价 |
+|------|------|------|
+| **GitHub Copilot** | AI 代码补全 | 💰 $10/月 |
+| **Codeium** | AI 代码补全 (免费替代) | 🆓 免费 |
+
 ```bash
 # GitHub Copilot
 code --install-extension github.copilot
@@ -101,6 +154,8 @@ code --install-extension github.copilot
 # Codeium (免费替代)
 code --install-extension codeium.codeium
 ```
+
+---
 
 ## Settings
 
@@ -270,7 +325,11 @@ code --install-extension codeium.codeium
 ]
 ```
 
+---
+
 ## Cursor (AI Editor)
+
+> 🔄 **Freemium** ($20/月 Pro) | 📦 Homebrew | [官网](https://cursor.sh)
 
 ### Installation
 
@@ -280,6 +339,15 @@ brew install --cask cursor
 
 Cursor 是基于 VS Code 的 AI-first 编辑器，内置 Claude/GPT 集成。
 
+### 核心功能
+
+| 功能 | 快捷键 | 说明 |
+|------|--------|------|
+| **Cmd+K** | `⌘ K` | 在选中代码上执行 AI 操作 |
+| **Cmd+L** | `⌘ L` | 打开 Chat 面板 |
+| **Cmd+I** | `⌘ I` | 内联代码生成 |
+| **Tab** | `Tab` | 接受 AI 建议 |
+
 ### 迁移 VS Code 配置
 
 Cursor 可以直接导入 VS Code 的：
@@ -288,9 +356,13 @@ Cursor 可以直接导入 VS Code 的：
 - 键绑定
 - 主题
 
+---
+
 ## Vim/Neovim
 
 ### 基础 Vim
+
+> 🆓 **开源免费** | macOS 内置
 
 ```bash
 # ~/.vimrc
@@ -309,12 +381,16 @@ set clipboard=unnamed
 
 ### Neovim (可选)
 
+> 🆓 **开源免费** | 📦 Homebrew | [官网](https://neovim.io)
+
 ```bash
 brew install neovim
 
 # LazyVim (预配置)
 # https://www.lazyvim.org/
 ```
+
+---
 
 ## Project Settings
 
@@ -349,6 +425,8 @@ brew install neovim
 }
 ```
 
+---
+
 ## Tips
 
 ### 多光标编辑
@@ -370,6 +448,30 @@ brew install neovim
 - `⌘ + ⌥ + ]` - 展开
 - `⌘ + K ⌘ + 0` - 折叠所有
 - `⌘ + K ⌘ + J` - 展开所有
+
+---
+
+## 快速安装脚本
+
+```bash
+#!/bin/bash
+# install-editor.sh
+
+# VS Code
+brew install --cask visual-studio-code
+
+# Cursor
+brew install --cask cursor
+
+# 核心扩展
+code --install-extension biomejs.biome
+code --install-extension eamodio.gitlens
+code --install-extension usernamehw.errorlens
+code --install-extension zhuangtongfa.material-theme
+code --install-extension pkief.material-icon-theme
+
+echo "Editor setup complete!"
+```
 
 ## Next Steps
 

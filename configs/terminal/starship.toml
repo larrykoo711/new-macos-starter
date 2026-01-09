@@ -141,3 +141,31 @@ disabled = true
 
 [battery]
 disabled = true
+
+# ===================
+# Additional Languages
+# ===================
+
+[java]
+symbol = " "
+format = "[$symbol($version )]($style)"
+style = "bold red"
+disabled = true  # Enable if needed
+
+[kotlin]
+symbol = " "
+format = "[$symbol($version )]($style)"
+style = "bold magenta"
+disabled = true  # Enable if needed
+
+[lua]
+symbol = " "
+disabled = true
+
+[ruby]
+symbol = " "
+disabled = true
+
+[swift]
+symbol = " "
+disabled = true
