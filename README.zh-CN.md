@@ -32,7 +32,7 @@ git clone https://github.com/larrykoo711/new-macos-starter.git
 cd new-macos-starter
 
 # 在 Claude Code 或 Cursor 终端中启动安装向导
-/setup
+/new-macos-setup
 ```
 
 AI 向导会：
@@ -43,13 +43,13 @@ AI 向导会：
 
 ```bash
 # 使用默认配置快速安装
-/setup --quick
+/new-macos-setup --quick
 
 # 使用预设（fullstack, frontend, backend, data, devops）
-/setup --preset fullstack
+/new-macos-setup --preset fullstack
 
 # 预览安装计划（不实际安装）
-/setup --dry-run
+/new-macos-setup --dry-run
 ```
 
 ### 方式二：传统脚本安装
@@ -63,7 +63,7 @@ cd new-macos-starter
 ./scripts/bootstrap.sh
 ```
 
-bootstrap.sh 会安装 Xcode CLI Tools、Rosetta 2（Apple Silicon）和 Homebrew。然后引导你使用 AI 向导 `/setup` 完成完整配置。
+bootstrap.sh 会安装 Xcode CLI Tools、Rosetta 2（Apple Silicon）和 Homebrew。然后引导你使用 AI 向导 `/new-macos-setup` 完成完整配置。
 
 ## 包含内容
 
@@ -133,7 +133,7 @@ bootstrap.sh 会安装 Xcode CLI Tools、Rosetta 2（Apple Silicon）和 Homebre
 macOS-Starter/
 ├── .claude/
 │   ├── commands/
-│   │   └── setup.md              # /setup 命令入口
+│   │   └── new-macos-setup.md     # /new-macos-setup 命令入口
 │   └── skills/
 │       └── macos-setup/          # AI 安装向导技能
 │           ├── SKILL.md          # 技能定义 + 问答流程

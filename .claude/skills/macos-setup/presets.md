@@ -410,12 +410,12 @@ macos:
 
 ```bash
 # Use a preset
-/setup --preset fullstack
+/new-macos-setup --preset fullstack
 
 # Preview preset without installing
-/setup --preset backend --dry-run
+/new-macos-setup --preset backend --dry-run
 
 # Combine preset with modifications
-/setup --preset minimal
+/new-macos-setup --preset minimal
 # Then answer additional questions to customize
 ```

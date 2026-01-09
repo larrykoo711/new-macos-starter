@@ -138,6 +138,6 @@ echo ""
 if [ $PERCENT -ge 80 ]; then
     echo "Your macOS development environment is ready!"
 else
-    echo "Some tools are missing. Run '/setup' to install them."
+    echo "Some tools are missing. Run '/new-macos-setup' to install them."
 fi
 echo ""

@@ -4,7 +4,7 @@ description: |
   macOS development environment setup wizard. Interactive Q&A to collect preferences,
   auto-detect installed software, generate customized installation plan.
   Supports presets: fullstack, frontend, backend, data, devops.
-  Triggers: /setup, macos setup, dev environment, new mac
+  Triggers: /new-macos-setup, macos setup, dev environment, new mac
 ---
 
 # macOS Starter - Setup Skill
@@ -15,10 +15,10 @@ description: |
 
 | Command | Description |
 |---------|-------------|
-| `/setup` | Full interactive setup wizard |
-| `/setup --quick` | Quick setup with defaults |
-| `/setup --preset fullstack` | Use fullstack preset |
-| `/setup --dry-run` | Preview without installing |
+| `/new-macos-setup` | Full interactive setup wizard |
+| `/new-macos-setup --quick` | Quick setup with defaults |
+| `/new-macos-setup --preset fullstack` | Use fullstack preset |
+| `/new-macos-setup --dry-run` | Preview without installing |
 
 ---
 
@@ -573,7 +573,7 @@ retry_install() {
 ## Trigger Keywords
 
 This skill activates on:
-- `/setup`
+- `/new-macos-setup`
 - "setup macos"
 - "configure mac"
 - "new mac setup"

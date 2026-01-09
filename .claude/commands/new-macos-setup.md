@@ -3,10 +3,10 @@ description: Interactive macOS development environment setup wizard - detects ex
 allowed-tools: Bash(*), Read(**), Write(**), AskUserQuestion
 argument-hint: [--quick] [--preset <preset>] [--dry-run]
 # examples:
-#   - /setup                    # Full interactive setup
-#   - /setup --quick            # Quick setup with sensible defaults
-#   - /setup --preset fullstack # Use fullstack developer preset
-#   - /setup --dry-run          # Generate plan without executing
+#   - /new-macos-setup                    # Full interactive setup
+#   - /new-macos-setup --quick            # Quick setup with sensible defaults
+#   - /new-macos-setup --preset fullstack # Use fullstack developer preset
+#   - /new-macos-setup --dry-run          # Generate plan without executing
 ---
 
 # macOS Starter - Interactive Setup Wizard
@@ -25,10 +25,10 @@ This command provides an **interactive, conversational setup experience** for co
 ## Usage
 
 ```bash
-/setup                      # Full interactive mode
-/setup --quick              # Quick setup with defaults
-/setup --preset fullstack   # Use a preset configuration
-/setup --dry-run            # Preview plan without installing
+/new-macos-setup                      # Full interactive mode
+/new-macos-setup --quick              # Quick setup with defaults
+/new-macos-setup --preset fullstack   # Use a preset configuration
+/new-macos-setup --dry-run            # Preview plan without installing
 ```
 
 ### Options

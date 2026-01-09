@@ -33,7 +33,7 @@ cd new-macos-starter
 
 # Start the interactive setup wizard
 # In Claude Code or Cursor terminal:
-/setup
+/new-macos-setup
 ```
 
 The AI wizard will:
@@ -44,13 +44,13 @@ The AI wizard will:
 
 ```bash
 # Quick setup with sensible defaults
-/setup --quick
+/new-macos-setup --quick
 
 # Use a preset (fullstack, frontend, backend, data, devops)
-/setup --preset fullstack
+/new-macos-setup --preset fullstack
 
 # Preview plan without installing
-/setup --dry-run
+/new-macos-setup --dry-run
 ```
 
 ### Option 2: Traditional Bootstrap Script
@@ -64,7 +64,7 @@ cd new-macos-starter
 ./scripts/bootstrap.sh
 ```
 
-The bootstrap script will install Xcode CLI Tools, Rosetta 2 (if Apple Silicon), and Homebrew. Then it guides you to use the AI-powered `/setup` command for complete configuration.
+The bootstrap script will install Xcode CLI Tools, Rosetta 2 (if Apple Silicon), and Homebrew. Then it guides you to use the AI-powered `/new-macos-setup` command for complete configuration.
 
 ## What's Inside
 
@@ -134,7 +134,7 @@ The bootstrap script will install Xcode CLI Tools, Rosetta 2 (if Apple Silicon),
 macOS-Starter/
 ├── .claude/
 │   ├── commands/
-│   │   └── setup.md              # /setup command entry point
+│   │   └── new-macos-setup.md    # /new-macos-setup command entry point
 │   └── skills/
 │       └── macos-setup/          # AI setup wizard skill
 │           ├── SKILL.md          # Skill definition + Q&A flow

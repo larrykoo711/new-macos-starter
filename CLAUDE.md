@@ -5,7 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Project Overview
 
 macOS Starter is an opinionated macOS development environment setup guide. It provides:
-- Interactive AI-powered setup wizard (`/setup` command)
+- Interactive AI-powered setup wizard (`/new-macos-setup` command)
 - Configuration files for shell, git, editors, and terminal
 - Documentation for manual setup reference
 - Role-based presets (fullstack, frontend, backend, data, devops)
@@ -20,16 +20,16 @@ macOS Starter is an opinionated macOS development environment setup guide. It pr
 ./scripts/verify.sh
 
 # Interactive setup (in Claude Code or Cursor)
-/setup                      # Full interactive wizard
-/setup --preset fullstack   # Use preset configuration
-/setup --dry-run            # Preview without installing
+/new-macos-setup                      # Full interactive wizard
+/new-macos-setup --preset fullstack   # Use preset configuration
+/new-macos-setup --dry-run            # Preview without installing
 ```
 
 ## Architecture
 
 ```
 .claude/
-├── commands/setup.md       # /setup command definition
+├── commands/new-macos-setup.md       # /new-macos-setup command definition
 └── skills/macos-setup/     # AI setup wizard skill
     ├── SKILL.md            # Skill logic and Q&A flow
     ├── presets.md          # Role-based configurations
@@ -47,7 +47,7 @@ scripts/
 └── Brewfile                # Homebrew package definitions
 ```
 
-## /setup Skill Execution Flow
+## /new-macos-setup Skill Execution Flow
 
 1. **Network Check** - Verify GitHub/Homebrew access, configure proxy if needed
 2. **System Detection** - Detect installed tools using `command -v` and app checks
