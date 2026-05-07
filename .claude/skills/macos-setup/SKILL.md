@@ -204,10 +204,9 @@ detect_installed() {
     echo "--- Vibe Coding Tools ---"
     command -v claude &>/dev/null && echo "✅ Claude Code: $(claude --version 2>/dev/null | head -1 || echo 'installed')" || echo "❌ Claude Code"
     command -v ccline &>/dev/null && echo "✅ CCometixLine: installed" || echo "❌ CCometixLine"
-    [ -d "/Applications/Cursor.app" ] && echo "✅ Cursor: installed" || echo "❌ Cursor"
+    command -v code &>/dev/null && echo "✅ VS Code: installed" || echo "❌ VS Code"
     command -v opencode &>/dev/null && echo "✅ OpenCode: installed" || echo "❌ OpenCode"
     [ -d "/Applications/Cherry Studio.app" ] && echo "✅ Cherry Studio: installed" || echo "❌ Cherry Studio"
-    [ -d "/Applications/LM Studio.app" ] && echo "✅ LM Studio: installed" || echo "❌ LM Studio"
 }
 ```
 
@@ -236,11 +235,11 @@ questions:
     multiSelect: true
     options:
       - label: "JavaScript/TypeScript"
-        description: "fnm + Node.js LTS + pnpm"
+        description: "fnm + Node.js 24 LTS + pnpm"
       - label: "Python"
-        description: "uv + Python 3.12"
+        description: "uv + Python 3.13"
       - label: "Go"
-        description: "goenv + latest Go"
+        description: "goenv + Go 1.25.x"
       - label: "Rust"
         description: "rustup + stable"
 
@@ -257,11 +256,11 @@ questions:
   - id: vibe_coding
     question: "Which additional Vibe Coding tools do you need?"
     multiSelect: true
-    note: "We assume you already have at least one AI coding tool installed to use this project."
+    note: "Default editor is VS Code (free, mature). Claude Code is the recommended AI CLI companion."
     detection: |
       command -v claude &>/dev/null && echo "✅ Claude Code installed"
       command -v ccline &>/dev/null && echo "✅ CCometixLine installed"
-      [ -d "/Applications/Cursor.app" ] && echo "✅ Cursor installed"
+      command -v code &>/dev/null && echo "✅ VS Code installed"
       command -v opencode &>/dev/null && echo "✅ OpenCode installed"
       [ -d "/Applications/Cherry Studio.app" ] && echo "✅ Cherry Studio installed"
     options:
@@ -272,9 +271,9 @@ questions:
         description: "Claude Code statusline enhancer (Git, model, context)"
         skip_if: "command -v ccline &>/dev/null"
         requires: "Node.js"
-      - label: "Cursor"
-        description: "AI-first code editor"
-        skip_if: "[ -d '/Applications/Cursor.app' ]"
+      - label: "VS Code"
+        description: "Free, mature editor with Claude Code integration"
+        skip_if: "command -v code &>/dev/null"
       - label: "OpenCode"
         description: "Open-source terminal AI assistant"
         skip_if: "command -v opencode &>/dev/null"
@@ -285,11 +284,10 @@ questions:
   - id: apps
     question: "Which collaboration apps?"
     multiSelect: true
+    note: "Mainstream international apps (Slack/Discord/WhatsApp/Notion) are excluded by default — easy to install on demand."
     options:
       - label: "Work (CN)"
-        description: "Lark + DingTalk + WeCom"
-      - label: "International"
-        description: "Slack + Discord + WhatsApp"
+        description: "Lark + DingTalk + WeCom + WeChat"
       - label: "Meetings"
         description: "Tencent Meeting + Zoom"
 
@@ -351,7 +349,7 @@ Generate structured installation plan based on answers:
 |------|---------|---------|---------|
 | Claude Code | Anthropic agentic CLI | `brew install --cask claude-code` | `command -v claude` |
 | CCometixLine | Claude Code statusline | `npm install -g @cometix/ccline` | `command -v ccline` |
-| Cursor | AI-first code editor | `brew install --cask cursor` | App exists |
+| VS Code | Free, mature editor (recommended) | `brew install --cask visual-studio-code` | `command -v code` |
 | OpenCode | Open-source terminal AI | `brew install opencode` | `command -v opencode` |
 | Cherry Studio | Multi-model AI client | `brew install --cask cherry-studio` | App exists |
 
@@ -434,12 +432,12 @@ else
     echo "⏭️  CCometixLine already installed, skipping"
 fi
 
-# Cursor
-if [ ! -d "/Applications/Cursor.app" ]; then
-    echo "📦 Installing Cursor..."
-    brew install --cask cursor
+# VS Code (replaces Cursor as the recommended editor)
+if ! command -v code &>/dev/null; then
+    echo "📦 Installing VS Code..."
+    brew install --cask visual-studio-code
 else
-    echo "⏭️  Cursor already installed, skipping"
+    echo "⏭️  VS Code already installed, skipping"
 fi
 
 # OpenCode
@@ -556,7 +554,7 @@ detect_with_version() {
 name: Fullstack Developer
 languages: [javascript, python]
 containers: full
-apps: [raycast, warp, cursor, orbstack, notion]
+apps: [raycast, warp, vscode, orbstack]
 macos: [dock, keyboard]
 ```
 
@@ -565,7 +563,7 @@ macos: [dock, keyboard]
 name: Frontend Developer
 languages: [javascript]
 containers: docker
-apps: [raycast, cursor, figma]
+apps: [raycast, vscode, figma]
 macos: [dock, keyboard]
 ```
 
@@ -575,7 +573,7 @@ name: Backend Developer
 languages: [go, python]
 containers: full
 cloud: [aws]
-apps: [raycast, warp, cursor, orbstack]
+apps: [raycast, warp, vscode, orbstack]
 macos: [dock, keyboard, finder]
 ```
 
@@ -584,7 +582,7 @@ macos: [dock, keyboard, finder]
 name: Data/ML Engineer
 languages: [python]
 containers: docker
-apps: [cursor, jupyter]
+apps: [vscode, jupyter]
 macos: [keyboard]
 ```
 

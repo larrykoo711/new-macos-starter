@@ -146,11 +146,11 @@ brew install goenv go
 ### Development
 | App | Description | Command |
 |-----|-------------|---------|
-| Cursor | AI code editor | `brew install --cask cursor` |
-| VS Code | Code editor | `brew install --cask visual-studio-code` |
+| VS Code | Code editor (recommended) | `brew install --cask visual-studio-code` |
 | Warp | Modern terminal | `brew install --cask warp` |
 | OrbStack | Docker/K8s | `brew install --cask orbstack` |
 | Sourcetree | Git GUI | `brew install --cask sourcetree` |
+| Proxyman | HTTP debugging | `brew install --cask proxyman` |
 
 ### Collaboration (CN)
 | App | Description | Command |
@@ -160,12 +160,8 @@ brew install goenv go
 | WeChat | Personal | `brew install --cask wechat` |
 | Tencent Meeting | Video call | `brew install --cask tencent-meeting` |
 
-### Collaboration (International)
-| App | Description | Command |
-|-----|-------------|---------|
-| Discord | Community | `brew install --cask discord` |
-| WhatsApp | Messaging | `brew install --cask whatsapp` |
-| Notion | Notes/Wiki | `brew install --cask notion` |
+> Mainstream international apps (Slack/Discord/WhatsApp/Notion) are intentionally
+> omitted — install them on demand from their official sites.
 
 ### Media
 | App | Description | Command |
@@ -195,10 +191,9 @@ brew install goenv go
 |-----|-------------|---------|-----------|
 | Claude Code | Anthropic agentic CLI | `brew install --cask claude-code` | `command -v claude` |
 | CCometixLine | Claude Code statusline enhancer | `npm install -g @cometix/ccline` | `command -v ccline` |
-| Cursor | AI-first code editor | `brew install --cask cursor` | `[ -d "/Applications/Cursor.app" ]` |
+| VS Code | Free, mature editor (recommended companion to Claude Code) | `brew install --cask visual-studio-code` | `command -v code` |
 | OpenCode | Open-source terminal AI | `brew install opencode` | `command -v opencode` |
 | Cherry Studio | AI desktop client | `brew install --cask cherry-studio` | `[ -d "/Applications/Cherry Studio.app" ]` |
-| LM Studio | Local LLM runner | `brew install --cask lm-studio` | `[ -d "/Applications/LM Studio.app" ]` |
 
 **检测脚本:**
 ```bash
@@ -206,10 +201,9 @@ detect_vibe_coding() {
     echo "=== Vibe Coding Tools ==="
     command -v claude &>/dev/null && echo "✅ Claude Code: $(claude --version 2>/dev/null || echo 'installed')" || echo "❌ Claude Code"
     command -v ccline &>/dev/null && echo "✅ CCometixLine: installed" || echo "❌ CCometixLine"
-    [ -d "/Applications/Cursor.app" ] && echo "✅ Cursor: installed" || echo "❌ Cursor"
+    command -v code &>/dev/null && echo "✅ VS Code: installed" || echo "❌ VS Code"
     command -v opencode &>/dev/null && echo "✅ OpenCode: installed" || echo "❌ OpenCode"
     [ -d "/Applications/Cherry Studio.app" ] && echo "✅ Cherry Studio: installed" || echo "❌ Cherry Studio"
-    [ -d "/Applications/LM Studio.app" ] && echo "✅ LM Studio: installed" || echo "❌ LM Studio"
 }
 ```
 
@@ -238,12 +232,12 @@ install_vibe_coding() {
         echo "⏭️  CCometixLine already installed, skipping"
     fi
 
-    # Cursor
-    if [ ! -d "/Applications/Cursor.app" ]; then
-        echo "📦 Installing Cursor..."
-        brew install --cask cursor
+    # VS Code (replaces Cursor as the recommended editor)
+    if ! command -v code &>/dev/null; then
+        echo "📦 Installing VS Code..."
+        brew install --cask visual-studio-code
     else
-        echo "⏭️  Cursor already installed, skipping"
+        echo "⏭️  VS Code already installed, skipping"
     fi
 
     # OpenCode
@@ -483,7 +477,6 @@ check_cmd k9s
 echo "--- Applications ---"
 check_app "Raycast"
 check_app "Warp"
-check_app "Cursor"
 check_app "Visual Studio Code"
 check_app "OrbStack"
 ```

@@ -51,12 +51,10 @@ brew install danielfoehrkn/switch/switch
 ```bash
 brew install --cask raycast
 brew install --cask warp
-brew install --cask cursor
 brew install --cask claude-code
 brew install --cask visual-studio-code
 brew install --cask orbstack
 brew install --cask sourcetree
-brew install --cask notion
 ```
 
 ### Fonts
@@ -106,7 +104,6 @@ brew install --cask orbstack
 ### Applications
 ```bash
 brew install --cask raycast
-brew install --cask cursor
 brew install --cask claude-code
 brew install --cask visual-studio-code
 brew install --cask iina
@@ -169,7 +166,6 @@ brew install awscli rclone
 ```bash
 brew install --cask raycast
 brew install --cask warp
-brew install --cask cursor
 brew install --cask claude-code
 brew install --cask orbstack
 brew install --cask sourcetree
@@ -226,7 +222,6 @@ brew install --cask orbstack
 ### Applications
 ```bash
 brew install --cask raycast
-brew install --cask cursor
 brew install --cask claude-code
 brew install --cask visual-studio-code
 ```
@@ -303,7 +298,6 @@ brew install rclone
 ```bash
 brew install --cask raycast
 brew install --cask warp
-brew install --cask cursor
 brew install --cask claude-code
 brew install --cask orbstack
 brew install --cask sourcetree
@@ -340,7 +334,6 @@ brew install eza bat fd ripgrep
 ```bash
 brew install --cask raycast
 brew install --cask warp
-brew install --cask cursor
 brew install --cask claude-code
 ```
 
@@ -390,7 +383,7 @@ containers:
 apps:
   - raycast
   - warp
-  - cursor
+  - visual-studio-code
 
 fonts:
   - font-jetbrains-mono-nerd-font
