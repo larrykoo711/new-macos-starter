@@ -6,6 +6,10 @@
 
 ## [0.2.1] - 2026-05-07
 
+### Added — 终端推荐
+- **Ghostty**：开源、GPU 加速、Mitchell Hashimoto 出品。新增 cask 到 Brewfile，加入 verify 检测项与 SKILL/packages 注册表
+- **tmux**：终端复用器，作为 Ghostty 推荐搭档加入 Brewfile（formula）；docs/02 / docs/08 表格更新为 "Ghostty + tmux" 推荐组合，Warp 降为可选替代
+
 ### Removed — 淘汰工具
 - **Cursor**：从 Brewfile / SKILL / presets / packages / docs / README 全面移除。AI 编辑器主推 VS Code + Claude Code 扩展组合
 - **Notion**：从默认推荐列表移除（用户自行下载即可）

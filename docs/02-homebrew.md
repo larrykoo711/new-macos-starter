@@ -170,15 +170,17 @@ brew install --cask keepingyouawake keka appcleaner
 | App | 说明 | 定价 | 安装方式 |
 |-----|------|------|----------|
 | **VS Code** | 代码编辑器（推荐主力） | 🆓 免费 | 📦 `brew install --cask visual-studio-code` |
-| **Warp** | AI 终端 | 🔄 基础免费/Team 付费 | 📦 `brew install --cask warp` |
+| **Ghostty** | 现代 GPU 加速终端（推荐） | 🆓 开源免费 | 📦 `brew install --cask ghostty` |
+| **tmux** | 终端复用器（与 Ghostty 配合） | 🆓 开源免费 | 📦 `brew install tmux` |
+| **Warp** | AI 终端（替代选项） | 🔄 基础免费/Team 付费 | 📦 `brew install --cask warp` |
 | **OrbStack** | Docker/K8s | 🔄 个人免费/Pro $8/月 | 📦 `brew install --cask orbstack` |
 | **Proxyman** | HTTP 调试 | 🔄 基础免费/$59 永久 | 📦 `brew install --cask proxyman` |
 | **Sourcetree** | Git GUI | 🆓 免费 | 📦 `brew install --cask sourcetree` |
 
 ```bash
-brew install --cask visual-studio-code
-brew install --cask warp orbstack
-brew install --cask proxyman sourcetree
+brew install --cask visual-studio-code ghostty
+brew install tmux
+brew install --cask orbstack proxyman sourcetree
 ```
 
 ### 设计 & 媒体

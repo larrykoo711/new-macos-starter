@@ -145,9 +145,11 @@ $JSON_MODE || echo ""
 # Applications
 $JSON_MODE || echo "--- Applications ---"
 run check_app "Raycast"
+run check_app "Ghostty"
 run check_app "Warp"
 run check_app "Visual Studio Code"
 run check_app "OrbStack"
+run check_cmd tmux "tmux"
 $JSON_MODE || echo ""
 
 # Vibe Coding Tools

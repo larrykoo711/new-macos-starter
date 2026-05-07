@@ -147,7 +147,9 @@ brew install goenv go
 | App | Description | Command |
 |-----|-------------|---------|
 | VS Code | Code editor (recommended) | `brew install --cask visual-studio-code` |
-| Warp | Modern terminal | `brew install --cask warp` |
+| Ghostty | GPU-accelerated terminal (recommended) | `brew install --cask ghostty` |
+| tmux | Terminal multiplexer | `brew install tmux` |
+| Warp | AI terminal (alt) | `brew install --cask warp` |
 | OrbStack | Docker/K8s | `brew install --cask orbstack` |
 | Sourcetree | Git GUI | `brew install --cask sourcetree` |
 | Proxyman | HTTP debugging | `brew install --cask proxyman` |
@@ -475,6 +477,7 @@ check_cmd k9s
 
 echo "--- Applications ---"
 check_app "Raycast"
+check_app "Ghostty"
 check_app "Warp"
 check_app "Visual Studio Code"
 check_app "OrbStack"

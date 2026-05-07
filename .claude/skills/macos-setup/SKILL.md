@@ -195,9 +195,11 @@ detect_installed() {
 
     # Applications
     [ -d "/Applications/Raycast.app" ] && echo "✅ Raycast: installed"
+    [ -d "/Applications/Ghostty.app" ] && echo "✅ Ghostty: installed"
     [ -d "/Applications/Warp.app" ] && echo "✅ Warp: installed"
     [ -d "/Applications/Visual Studio Code.app" ] && echo "✅ VS Code: installed"
     [ -d "/Applications/OrbStack.app" ] && echo "✅ OrbStack: installed"
+    command -v tmux &>/dev/null && echo "✅ tmux: installed"
 
     # Vibe Coding Tools
     echo ""
@@ -339,7 +341,9 @@ Generate structured installation plan based on answers:
 | App | Purpose | Command |
 |-----|---------|---------|
 | Raycast | Launcher + window mgmt | `brew install --cask raycast` |
-| Warp | Modern terminal | `brew install --cask warp` |
+| Ghostty | GPU-accelerated terminal (recommended) | `brew install --cask ghostty` |
+| tmux | Terminal multiplexer (pair with Ghostty) | `brew install tmux` |
+| Warp | AI terminal (alt) | `brew install --cask warp` |
 | OrbStack | Docker/K8s | `brew install --cask orbstack` |
 
 ### Phase 5: Vibe Coding Tools
@@ -405,7 +409,8 @@ npm install -g pnpm
 
 # Phase 3: Apps
 execute_phase "3: Applications"
-brew install --cask raycast warp orbstack
+brew install --cask raycast ghostty warp orbstack
+brew install tmux
 
 # Phase 4: Vibe Coding (with skip detection)
 execute_phase "4: Vibe Coding Tools"

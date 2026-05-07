@@ -32,9 +32,14 @@
 
 | App | 说明 | 定价 | 安装方式 |
 |-----|------|------|---------|
-| **Warp** | AI 驱动的现代终端 | 🔄 基础免费/Team付费 | 📦 `brew install --cask warp` |
+| **Ghostty** | 现代 GPU 加速终端（推荐主力） | 🆓 开源免费 | 📦 `brew install --cask ghostty` |
+| **tmux** | 终端多窗格/会话复用器 | 🆓 开源免费 | 📦 `brew install tmux` |
+| **Warp** | AI 驱动的现代终端（替代选项） | 🔄 基础免费/Team付费 | 📦 `brew install --cask warp` |
 
-> **Warp 特点**: AI 命令建议、块状输出、内置工作流、现代化 UI
+> **推荐组合**: Ghostty + tmux — Ghostty 提供原生 macOS 体验和 GPU 加速，
+> tmux 负责窗格分屏、会话恢复、远程开发的稳定性。
+>
+> **Warp 特点**: AI 命令建议、块状输出、内置工作流；适合不想配置 tmux 的用户。
 
 ### API & 网络调试
 
@@ -182,7 +187,9 @@ brew install --cask appcleaner
 # 开发
 brew install --cask visual-studio-code
 brew install --cask claude-code
-brew install --cask warp
+brew install --cask ghostty
+brew install tmux
+brew install --cask warp           # 可选替代 Ghostty
 brew install --cask orbstack
 brew install --cask proxyman
 brew install --cask sourcetree

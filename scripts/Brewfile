@@ -25,6 +25,7 @@ brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
 brew "autojump"
 brew "fzf"                    # Fuzzy finder
+brew "tmux"                   # Terminal multiplexer (推荐与 Ghostty 配合)
 
 # Modern CLI Replacements
 brew "eza"                    # Better ls
@@ -107,6 +108,7 @@ cask "appcleaner"
 
 cask "visual-studio-code"
 cask "warp"
+cask "ghostty"                # 现代 GPU 加速终端（开源，Mitchell Hashimoto 出品）
 cask "orbstack"
 cask "proxyman"
 cask "sourcetree"

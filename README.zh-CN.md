@@ -73,7 +73,7 @@ bootstrap.sh 会安装 Xcode CLI Tools、Rosetta 2（Apple Silicon）和 Homebre
 |------|------|------|
 | **包管理器** | [Homebrew](https://brew.sh) | macOS 的标准包管理器 |
 | **Shell** | Zsh + Oh-My-Zsh + Starship | 现代化 Shell 体验，美观的命令提示符 |
-| **终端** | [Warp](https://warp.dev) | AI 驱动的现代终端 |
+| **终端** | [Ghostty](https://ghostty.org) + [tmux](https://github.com/tmux/tmux) | 开源 GPU 加速终端 + 多窗格复用（Warp 为可选替代） |
 | **启动器** | [Raycast](https://raycast.com) | Spotlight 替代品 + 窗口管理 |
 | **版本控制** | Git + gh CLI | GitHub 原生集成 |
 
@@ -107,7 +107,7 @@ bootstrap.sh 会安装 Xcode CLI Tools、Rosetta 2（Apple Silicon）和 Homebre
 | 类别 | 应用 |
 |------|------|
 | **必装** | Raycast, 1Password, Chrome, KeepingYouAwake, Keka |
-| **开发** | VS Code, Warp, OrbStack, Proxyman, Sourcetree |
+| **开发** | VS Code, Ghostty, Warp, OrbStack, Proxyman, Sourcetree |
 | **通讯（中文）** | 飞书, 微信, 腾讯会议 |
 | **AI 工具** | Claude Code, Cherry Studio |
 | **系统** | iStat Menus, MonitorControl, Gas Mask |

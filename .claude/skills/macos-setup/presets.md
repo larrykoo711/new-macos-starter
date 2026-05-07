@@ -50,7 +50,8 @@ brew install danielfoehrkn/switch/switch
 ### Applications
 ```bash
 brew install --cask raycast
-brew install --cask warp
+brew install --cask ghostty warp
+brew install tmux
 brew install --cask claude-code
 brew install --cask visual-studio-code
 brew install --cask orbstack
@@ -165,7 +166,8 @@ brew install awscli rclone
 ### Applications
 ```bash
 brew install --cask raycast
-brew install --cask warp
+brew install --cask ghostty warp
+brew install tmux
 brew install --cask claude-code
 brew install --cask orbstack
 brew install --cask sourcetree
@@ -297,7 +299,8 @@ brew install rclone
 ### Applications
 ```bash
 brew install --cask raycast
-brew install --cask warp
+brew install --cask ghostty warp
+brew install tmux
 brew install --cask claude-code
 brew install --cask orbstack
 brew install --cask sourcetree
@@ -333,7 +336,8 @@ brew install eza bat fd ripgrep
 ### Applications
 ```bash
 brew install --cask raycast
-brew install --cask warp
+brew install --cask ghostty warp
+brew install tmux
 brew install --cask claude-code
 ```
 

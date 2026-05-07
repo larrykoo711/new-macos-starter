@@ -73,7 +73,7 @@ The bootstrap script will install Xcode CLI Tools, Rosetta 2 (if Apple Silicon),
 |----------|------|-----|
 | **Package Manager** | [Homebrew](https://brew.sh) | The standard package manager for macOS |
 | **Shell** | Zsh + Oh-My-Zsh + Starship | Modern shell experience with beautiful prompts |
-| **Terminal** | [Warp](https://warp.dev) | AI-powered modern terminal |
+| **Terminal** | [Ghostty](https://ghostty.org) + [tmux](https://github.com/tmux/tmux) | Open-source GPU-accelerated terminal with multiplexer (Warp as alt) |
 | **Launcher** | [Raycast](https://raycast.com) | Spotlight replacement + window management |
 | **Version Control** | Git + gh CLI | Native GitHub integration |
 
@@ -107,7 +107,7 @@ The bootstrap script will install Xcode CLI Tools, Rosetta 2 (if Apple Silicon),
 | Category | Apps |
 |----------|------|
 | **Must Have** | Raycast, 1Password, Chrome, KeepingYouAwake, Keka |
-| **Development** | VS Code, Warp, OrbStack, Proxyman, Sourcetree |
+| **Development** | VS Code, Ghostty, Warp, OrbStack, Proxyman, Sourcetree |
 | **Communication (CN)** | Lark, WeChat, Tencent Meeting |
 | **AI Tools** | Claude Code, Cherry Studio |
 | **System** | iStat Menus, MonitorControl, Gas Mask |

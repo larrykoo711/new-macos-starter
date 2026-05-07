@@ -113,8 +113,10 @@ command -v goenv && echo "goenv: installed"
 
 # Check applications
 [ -d "/Applications/Raycast.app" ] && echo "Raycast: installed"
+[ -d "/Applications/Ghostty.app" ] && echo "Ghostty: installed"
 [ -d "/Applications/Warp.app" ] && echo "Warp: installed"
 [ -d "/Applications/OrbStack.app" ] && echo "OrbStack: installed"
+command -v tmux && echo "tmux: installed"
 ```
 
 Output a summary table of detected vs missing tools.
@@ -203,7 +205,7 @@ Based on detection and preferences, generate a structured plan:
 
 ### Phase 3: Development Apps
 - [ ] VS Code
-- [ ] Warp
+- [ ] Ghostty + tmux  (Warp as alternative)
 - [ ] OrbStack
 
 ### Phase 4: System Enhancement
