@@ -105,11 +105,9 @@ cask "appcleaner"
 # Cask Applications - Development
 # =============================================================================
 
-cask "cursor"
 cask "visual-studio-code"
 cask "warp"
 cask "orbstack"
-cask "apifox"
 cask "proxyman"
 cask "sourcetree"
 
@@ -135,29 +133,19 @@ cask "iina"
 cask "imageoptim"
 
 # =============================================================================
-# Cask Applications - Communication
+# Cask Applications - Communication (China-focused)
 # =============================================================================
+# 主流国际工具（Slack/Discord/WhatsApp 等）很容易自行下载，故不再纳入默认列表。
+# 如需取消注释即可。
 
 cask "lark"                   # Feishu
 cask "dingtalk"
 cask "wecom"
 cask "wechat"
-cask "discord"
-cask "whatsapp"
-cask "slack"
 cask "tencent-meeting"
-
-# =============================================================================
-# Cask Applications - Productivity
-# =============================================================================
-
-cask "notion"
-
-# =============================================================================
-# Cask Applications - AI Tools
-# =============================================================================
-
-cask "lm-studio"
+# cask "whatsapp"
+# cask "slack"
+# cask "discord"
 
 # =============================================================================
 # Fonts

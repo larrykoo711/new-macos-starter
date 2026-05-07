@@ -146,7 +146,6 @@ $JSON_MODE || echo ""
 $JSON_MODE || echo "--- Applications ---"
 run check_app "Raycast"
 run check_app "Warp"
-run check_app "Cursor"
 run check_app "Visual Studio Code"
 run check_app "OrbStack"
 $JSON_MODE || echo ""
@@ -154,7 +153,7 @@ $JSON_MODE || echo ""
 # Vibe Coding Tools
 $JSON_MODE || echo "--- Vibe Coding ---"
 run check_cmd claude "Claude Code"
-run check_app "LM Studio"
+run check_app "Cherry Studio"
 $JSON_MODE || echo ""
 
 # Shell Configuration
