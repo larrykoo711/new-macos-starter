@@ -156,7 +156,6 @@ brew install goenv go
 | App | Description | Command |
 |-----|-------------|---------|
 | Lark | Feishu | `brew install --cask lark` |
-| DingTalk | Alibaba work | `brew install --cask dingtalk` |
 | WeChat | Personal | `brew install --cask wechat` |
 | Tencent Meeting | Video call | `brew install --cask tencent-meeting` |
 

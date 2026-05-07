@@ -146,10 +146,6 @@ brew install --cask font-meslo-lg-nerd-font
 2. Font → Change → JetBrains Mono
 3. Size → 14
 
-### Cursor
-
-与 VS Code 相同配置。
-
 ---
 
 ## 连字 (Ligatures)

@@ -169,18 +169,16 @@ brew install --cask keepingyouawake keka appcleaner
 
 | App | 说明 | 定价 | 安装方式 |
 |-----|------|------|----------|
-| **Cursor** | AI 编辑器 (主力) | 🔄 Freemium/$20月 Pro | 📦 `brew install --cask cursor` |
-| **VS Code** | 代码编辑器 | 🆓 免费 | 📦 `brew install --cask visual-studio-code` |
+| **VS Code** | 代码编辑器（推荐主力） | 🆓 免费 | 📦 `brew install --cask visual-studio-code` |
 | **Warp** | AI 终端 | 🔄 基础免费/Team 付费 | 📦 `brew install --cask warp` |
 | **OrbStack** | Docker/K8s | 🔄 个人免费/Pro $8/月 | 📦 `brew install --cask orbstack` |
-| **Apifox** | API 开发 | 🔄 基础免费/Team 付费 | 📦 `brew install --cask apifox` |
 | **Proxyman** | HTTP 调试 | 🔄 基础免费/$59 永久 | 📦 `brew install --cask proxyman` |
 | **Sourcetree** | Git GUI | 🆓 免费 | 📦 `brew install --cask sourcetree` |
 
 ```bash
-brew install --cask cursor visual-studio-code
+brew install --cask visual-studio-code
 brew install --cask warp orbstack
-brew install --cask apifox proxyman sourcetree
+brew install --cask proxyman sourcetree
 ```
 
 ### 设计 & 媒体
@@ -199,29 +197,24 @@ brew install --cask iina imageoptim
 | App | 说明 | 定价 | 安装方式 |
 |-----|------|------|----------|
 | **飞书 (Lark)** | 字节办公套件 | 🔄 基础免费/企业付费 | 📦 `brew install --cask lark` |
-| **钉钉** | 阿里办公套件 | 🔄 基础免费/企业付费 | 📦 `brew install --cask dingtalk` |
-| **企业微信** | 腾讯企业通讯 | 🔄 基础免费/企业付费 | 📦 `brew install --cask wecom` |
 | **微信** | 个人通讯 | 🆓 免费 | 📦 `brew install --cask wechat` |
-| **Discord** | 社区/游戏语音 | 🔄 基础免费/Nitro $9.99/月 | 📦 `brew install --cask discord` |
-| **WhatsApp** | 国际通讯 | 🆓 免费 | 📦 `brew install --cask whatsapp` |
 | **腾讯会议** | 视频会议 | 🔄 基础免费/企业付费 | 📦 `brew install --cask tencent-meeting` |
-| **Notion** | 笔记/知识库 | 🔄 基础免费/Plus $8/月 | 📦 `brew install --cask notion` |
 
 ```bash
-brew install --cask lark dingtalk wecom wechat
-brew install --cask discord whatsapp tencent-meeting
-brew install --cask notion
+brew install --cask lark wechat tencent-meeting
 ```
+
+> 国际通讯（Slack/Discord/WhatsApp/Notion 等）易于自行下载，故不再纳入默认列表。
 
 ### AI 工具
 
 | App | 说明 | 定价 | 安装方式 |
 |-----|------|------|----------|
 | **Claude Code** | Anthropic AI CLI | 🔄 API 付费 | 📦 `brew install --cask claude-code` |
-| **LM Studio** | 本地大模型 | 🆓 免费 | 📦 `brew install --cask lm-studio` |
+| **Cherry Studio** | 多模型 AI 桌面客户端 | 🆓 免费 | 📦 `brew install --cask cherry-studio` |
 
 ```bash
-brew install --cask claude-code lm-studio
+brew install --cask claude-code cherry-studio
 ```
 
 ### 系统增强

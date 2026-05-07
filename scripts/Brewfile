@@ -139,8 +139,6 @@ cask "imageoptim"
 # 如需取消注释即可。
 
 cask "lark"                   # Feishu
-cask "dingtalk"
-cask "wecom"
 cask "wechat"
 cask "tencent-meeting"
 # cask "whatsapp"

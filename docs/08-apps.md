@@ -25,8 +25,7 @@
 
 | App | 说明 | 定价 | 安装方式 |
 |-----|------|------|---------|
-| **Cursor** | AI-first 编辑器 (主力) | 🔄 Freemium/$20月Pro | 📦 `brew install --cask cursor` |
-| **VS Code** | 备用编辑器 | 🆓 开源免费 | 📦 `brew install --cask visual-studio-code` |
+| **VS Code** | 主力编辑器（搭配 Claude Code 扩展） | 🆓 开源免费 | 📦 `brew install --cask visual-studio-code` |
 | **Xcode** | iOS/macOS 开发 | 🆓 免费 | App Store |
 
 ### 终端
@@ -41,8 +40,10 @@
 
 | App | 说明 | 定价 | 安装方式 |
 |-----|------|------|---------|
-| **Apifox** | API 设计/调试/测试一体化 | 🔄 基础免费/Team付费 | 📦 `brew install --cask apifox` |
 | **Proxyman** | HTTP 调试代理 | 🔄 基础免费/$59永久 | 📦 `brew install --cask proxyman` |
+
+> API 设计调试工具（Apifox / Postman / Bruno 等）按团队习惯自行选择，
+> 各家差异不大，不再纳入默认推荐。
 
 ### 容器 & Git
 
@@ -84,13 +85,9 @@
 | App | 说明 | 定价 | 安装方式 |
 |-----|------|------|---------|
 | **飞书 (Lark)** | 字节跳动办公套件 | 🔄 基础免费/企业付费 | 📦 `brew install --cask lark` |
-| **钉钉** | 阿里办公套件 | 🔄 基础免费/企业付费 | 📦 `brew install --cask dingtalk` |
-| **企业微信** | 腾讯企业通讯 | 🔄 基础免费/企业付费 | 📦 `brew install --cask wecom` |
 | **微信** | 个人通讯 | 🆓 免费 | 📦 `brew install --cask wechat` |
-| **Discord** | 社区/游戏语音 | 🔄 基础免费/Nitro$9.99/月 | 📦 `brew install --cask discord` |
-| **WhatsApp** | 国际通讯 | 🆓 免费 | 📦 `brew install --cask whatsapp` |
-| **Slack** | 团队协作通讯 | 🔄 基础免费/Pro$8.75/月 | 📦 `brew install --cask slack` |
-| **Reddit** | 社区论坛 | 🆓 免费 | 📦 `brew install --cask reddit` |
+
+> 主流国际通讯工具（Slack/Discord/WhatsApp 等）易于自行下载，故不再纳入默认列表。
 
 ### 视频会议
 
@@ -102,10 +99,11 @@
 
 | App | 说明 | 定价 | 安装方式 |
 |-----|------|------|---------|
-| **Notion** | 全能笔记/知识库 | 🔄 基础免费/Plus$8/月 | 📦 `brew install --cask notion` |
 | **flomo** | 卡片笔记 | 🔄 基础免费/Pro ¥99/年 | [官网](https://flomoapp.com/) |
 | **WPS Office** | 办公套件 | 🔄 基础免费/会员付费 | [官网](https://www.wps.cn/) |
 | **PDF Expert** | PDF 编辑阅读 | 💰 $79.99 永久/SetApp | [官网](https://pdfexpert.com/) |
+
+> Notion / Obsidian 等主流笔记工具按个人偏好自选。
 
 ## AI 工具
 
@@ -113,9 +111,10 @@
 |-----|------|------|---------|
 | **Claude** | Anthropic AI 助手 | 🔄 基础免费/Pro$20/月 | [官网](https://claude.ai/) / App Store |
 | **Cherry Studio** | AI 客户端聚合 | 🆓 开源免费 | 📦 `brew install --cask cherry-studio` |
-| **LM Studio** | 本地大模型运行 | 🆓 免费 | 📦 `brew install --cask lm-studio` |
 | **AnythingLLM** | 本地 RAG 知识库 | 🆓 开源免费 | [官网](https://anythingllm.com/) |
 | **Draw Things** | AI 绘图 (本地) | 🆓 免费 | App Store |
+
+> 本地大模型运行器（LM Studio / Ollama / Jan 等）按硬件与偏好自选。
 
 ## 系统增强
 
@@ -145,9 +144,7 @@
 >
 > **OpenInEditor-Lite 配置编辑器**:
 > ```bash
-> # Cursor
-> defaults write wang.jianing.app.OpenInEditor-Lite LiteDefaultEditor Cursor
-> # VS Code
+> # VS Code（推荐）
 > defaults write wang.jianing.app.OpenInEditor-Lite LiteDefaultEditor Visual\ Studio\ Code
 > ```
 >
@@ -183,10 +180,10 @@ brew install --cask keka
 brew install --cask appcleaner
 
 # 开发
-brew install --cask cursor
+brew install --cask visual-studio-code
+brew install --cask claude-code
 brew install --cask warp
 brew install --cask orbstack
-brew install --cask apifox
 brew install --cask proxyman
 brew install --cask sourcetree
 
@@ -206,24 +203,17 @@ echo "Core apps installed!"
 #!/bin/bash
 # install-work-apps.sh
 
-# 通讯
+# 通讯（中国办公套件）
 brew install --cask lark
-brew install --cask dingtalk
-brew install --cask wecom
 brew install --cask wechat
-brew install --cask discord
-brew install --cask slack
 brew install --cask tencent-meeting
-
-# 笔记
-brew install --cask notion
 
 # 媒体
 brew install --cask iina
 brew install --cask imageoptim
 
 # AI
-brew install --cask lm-studio
+brew install --cask cherry-studio
 
 echo "Work apps installed!"
 ```

@@ -10,8 +10,7 @@
 
 | 编辑器 | 说明 | 定价 | 安装方式 |
 |--------|------|------|----------|
-| **VS Code** | 微软代码编辑器 | 🆓 免费 | 📦 `brew install --cask visual-studio-code` |
-| **Cursor** | AI-first 编辑器 | 🔄 Freemium/$20月 Pro | 📦 `brew install --cask cursor` |
+| **VS Code** | 微软代码编辑器（推荐主力，配合 Claude Code） | 🆓 免费 | 📦 `brew install --cask visual-studio-code` |
 | **Neovim** | 现代化 Vim | 🆓 开源免费 | 📦 `brew install neovim` |
 
 ---
@@ -327,34 +326,24 @@ code --install-extension codeium.codeium
 
 ---
 
-## Cursor (AI Editor)
+## VS Code + Claude Code（推荐 AI 工作流）
 
-> 🔄 **Freemium** ($20/月 Pro) | 📦 Homebrew | [官网](https://cursor.sh)
+我们不再推荐 Cursor 作为主力 AI 编辑器。理由：
 
-### Installation
+- **Claude Code** 已经是更强的 AI 工程师助手，CLI/IDE 无关
+- **VS Code** 生态最成熟、扩展最丰富，且完全免费
+- VS Code + Claude Code 的组合在自由度、价格、可控性上都明显胜出
 
 ```bash
-brew install --cask cursor
+# 安装两件套
+brew install --cask visual-studio-code
+brew install --cask claude-code
+
+# 在 VS Code 中安装 Claude Code 扩展（自动同步会话）
+code --install-extension anthropic.claude-code
 ```
 
-Cursor 是基于 VS Code 的 AI-first 编辑器，内置 Claude/GPT 集成。
-
-### 核心功能
-
-| 功能 | 快捷键 | 说明 |
-|------|--------|------|
-| **Cmd+K** | `⌘ K` | 在选中代码上执行 AI 操作 |
-| **Cmd+L** | `⌘ L` | 打开 Chat 面板 |
-| **Cmd+I** | `⌘ I` | 内联代码生成 |
-| **Tab** | `Tab` | 接受 AI 建议 |
-
-### 迁移 VS Code 配置
-
-Cursor 可以直接导入 VS Code 的：
-- 扩展
-- 设置
-- 键绑定
-- 主题
+工作流：在 VS Code 中编辑、在内置终端启动 `claude` 会话、用 `/new-macos-setup`、`/health-check`、`/feature-dev` 等命令驱动开发。
 
 ---
 
@@ -457,11 +446,8 @@ brew install neovim
 #!/bin/bash
 # install-editor.sh
 
-# VS Code
-brew install --cask visual-studio-code
-
-# Cursor
-brew install --cask cursor
+# VS Code + Claude Code
+brew install --cask visual-studio-code claude-code
 
 # 核心扩展
 code --install-extension biomejs.biome

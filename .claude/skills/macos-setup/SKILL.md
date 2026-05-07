@@ -287,7 +287,7 @@ questions:
     note: "Mainstream international apps (Slack/Discord/WhatsApp/Notion) are excluded by default — easy to install on demand."
     options:
       - label: "Work (CN)"
-        description: "Lark + DingTalk + WeCom + WeChat"
+        description: "Lark + WeChat"
       - label: "Meetings"
         description: "Tencent Meeting + Zoom"
 

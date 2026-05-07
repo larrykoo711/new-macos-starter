@@ -17,8 +17,8 @@ Vibe Coding 是一种全新的编程范式，通过与 AI 对话来完成编码�
 
 | 工具 | 类型 | 定价 | 安装方式 |
 |------|------|------|----------|
-| [Claude Code](#claude-code) | Terminal CLI | 🔄 API 付费 | 📦 `brew install --cask claude-code` |
-| [Cursor](#cursor) | GUI Editor | 🔄 Freemium ($20/月 Pro) | 📦 `brew install --cask cursor` |
+| [Claude Code](#claude-code) | Terminal CLI（推荐主力） | 🔄 API 付费 | 📦 `brew install --cask claude-code` |
+| [VS Code](../docs/06-editor.md) | GUI Editor（推荐配合 Claude Code） | 🆓 免费 | 📦 `brew install --cask visual-studio-code` |
 | [OpenCode](#opencode) | Terminal CLI | 🆓 开源 + API 付费 | 📦 `brew install opencode` |
 | [CCometixLine](#ccometixline) | CLI 增强 | 🆓 开源免费 | `npm install -g @cometix/ccline` |
 | [Cherry Studio](#cherry-studio) | GUI Client | 🆓 开源免费 | 📦 `brew install --cask cherry-studio` |
@@ -99,67 +99,22 @@ claude --model claude-sonnet-4-20250514
 
 ---
 
-### Cursor
+### VS Code（推荐 GUI 配合 Claude Code）
 
-> 🔄 **Freemium** ($20/月 Pro) | 📦 Homebrew | [官网](https://cursor.sh)
+不再单独推荐 Cursor。原因：
 
-AI-first 代码编辑器，基于 VS Code 构建。由 Anysphere 公司开发。
-
-#### 安装
+- **Claude Code** 在 CLI 即可完成 95% 的 AI 工程任务
+- **VS Code** + **Claude Code 扩展** 组合零成本、生态最广、扩展自由
+- 项目级提示词通过 `CLAUDE.md` 沉淀（与 IDE 无关），可跨工具复用
 
 ```bash
-brew install --cask cursor
+brew install --cask visual-studio-code claude-code
+
+# VS Code 中安装 Claude Code 官方扩展
+code --install-extension anthropic.claude-code
 ```
 
-#### 核心功能
-
-| 功能 | 快捷键 | 说明 |
-|------|--------|------|
-| **Cmd+K** | `⌘ K` | 在选中代码上执行 AI 操作 |
-| **Cmd+L** | `⌘ L` | 打开 Chat 面板 |
-| **Cmd+I** | `⌘ I` | 内联代码生成 |
-| **Tab** | `Tab` | 接受 AI 建议 |
-
-#### 配置建议
-
-```json
-// settings.json
-{
-  "cursor.cpp.disabledLanguages": [],
-  "cursor.general.enableAIReview": true,
-  "cursor.general.gitEnabled": true,
-
-  // 使用 Claude 模型
-  "cursor.aiModel": "claude-sonnet-4-20250514",
-
-  // 启用 Agent 模式
-  "cursor.agent.enabled": true
-}
-```
-
-#### .cursorrules 配置
-
-在项目根目录创建 `.cursorrules` 文件：
-
-```
-You are an expert in TypeScript, React, and Tailwind CSS.
-
-Code Style:
-- Use functional components with hooks
-- Prefer const over let
-- Use early returns for better readability
-- Follow the DRY principle
-
-Naming:
-- Components: PascalCase
-- Functions: camelCase
-- Constants: SCREAMING_SNAKE_CASE
-
-Testing:
-- Write tests for all new features
-- Use Vitest for unit tests
-- Use Playwright for E2E tests
-```
+VS Code 详细配置见 [06. Editor](06-editor.md)。
 
 ---
 
@@ -283,7 +238,7 @@ brew install --cask cherry-studio
 始终提供清晰的项目上下文：
 
 ```markdown
-# CLAUDE.md / .cursorrules
+# CLAUDE.md（IDE 无关，所有 AI 工具都能读）
 
 ## 项目简介
 （一句话说明系统是什么、面向谁、解决什么问题，例如：
@@ -340,8 +295,8 @@ claude -p "审查这个 PR 的代码改动，关注：
 3. 安全漏洞
 4. 代码可读性"
 
-# 在 Cursor 中
-# 选中代码 → Cmd+K → "review this code for potential issues"
+# 在 VS Code 中（安装 Claude Code 扩展后）
+# 选中代码 → 命令面板 → "Claude: Review selection"
 ```
 
 ### 4. 测试生成
@@ -350,31 +305,28 @@ claude -p "审查这个 PR 的代码改动，关注：
 # Claude Code
 claude -p "为 src/utils/validator.ts 生成单元测试，
 使用 Vitest，覆盖所有边界情况"
-
-# Cursor
-# 选中函数 → Cmd+K → "generate comprehensive tests"
 ```
 
 ---
 
 ## 工具对比
 
-| 特性 | Claude Code | Cursor | OpenCode | Cherry Studio |
-|------|-------------|--------|----------|---------------|
-| **界面** | Terminal | GUI (VS Code) | Terminal | GUI 客户端 |
-| **模型** | Claude 系列 | 多模型支持 | 多模型支持 | 多模型支持 |
-| **代码库理解** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ |
-| **适用场景** | 命令行/DevOps | 日常开发 | 开源替代 | 多模型对话 |
-| **定价** | 🔄 API 付费 | 🔄 $20/月 Pro | 🆓 + API | 🆓 免费 |
-| **离线支持** | ❌ | ❌ | ❌ | ✅ (本地模型) |
-| **开源** | ❌ | ❌ | ✅ | ✅ |
+| 特性 | Claude Code | OpenCode | Cherry Studio |
+|------|-------------|----------|---------------|
+| **界面** | Terminal | Terminal | GUI 客户端 |
+| **模型** | Claude 系列 | 多模型支持 | 多模型支持 |
+| **代码库理解** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ |
+| **适用场景** | 命令行/Agent 工程化 | 开源替代 | 多模型对话 |
+| **定价** | 🔄 API 付费 | 🆓 + API | 🆓 免费 |
+| **离线支持** | ❌ | ❌ | ✅ (本地模型) |
+| **开源** | ❌ | ✅ | ✅ |
 
 ### 使用建议
 
 | 工具 | 最佳用例 |
 |------|----------|
-| **Claude Code** | 终端重度用户、DevOps 任务、代码审查、Agent 模式 |
-| **Cursor** | 日常开发、需要 IDE 完整体验、VS Code 用户迁移 |
+| **Claude Code（推荐主力）** | 工程开发、DevOps、代码审查、Agent 模式 |
+| **VS Code（推荐 GUI 配合 Claude Code）** | 日常编辑、调试、扩展生态 |
 | **OpenCode** | 想要开源替代方案、自定义需求、多模型切换 |
 | **Cherry Studio** | 多模型对比测试、本地模型使用、非开发人员 |
 
@@ -388,7 +340,7 @@ claude -p "为 src/utils/validator.ts 生成单元测试，
 # Anthropic API
 export ANTHROPIC_API_KEY="sk-ant-xxx"
 
-# OpenAI API (用于 Cursor/OpenCode)
+# OpenAI API（OpenCode/Cherry Studio 等可选）
 export OPENAI_API_KEY="sk-xxx"
 
 # 可选: 使用代理
@@ -419,21 +371,24 @@ export HTTPS_PROXY="http://127.0.0.1:7890"
 #!/bin/bash
 # install-vibe-coding.sh
 
-# Claude Code (推荐使用 Homebrew)
-brew install --cask claude-code
+# Claude Code + VS Code（推荐组合）
+brew install --cask claude-code visual-studio-code
 
-# Cursor
-brew install --cask cursor
+# Claude Code 官方 VS Code 扩展（自动同步会话）
+code --install-extension anthropic.claude-code
 
 # OpenCode (可选)
 # brew install opencode
+
+# Cherry Studio (可选)
+# brew install --cask cherry-studio
 
 echo "Vibe Coding tools installed!"
 echo ""
 echo "Next steps:"
 echo "  1. Run 'claude login' to authenticate"
 echo "  2. Create CLAUDE.md in your projects"
-echo "  3. Configure .cursorrules for Cursor"
+echo "  3. Copy ~/.claude/settings.json from configs/claude/settings.json"
 ```
 
 ---
@@ -476,7 +431,7 @@ cp configs/claude/settings.json ~/.claude/settings.json
 ## 资源链接
 
 - [Claude Code 官方文档](https://docs.anthropic.com/claude-code)
-- [Cursor 官网](https://cursor.sh)
+- [VS Code 官网](https://code.visualstudio.com)
 - [OpenCode GitHub](https://github.com/opencode-ai/opencode)
 - [Anthropic Prompt Engineering](https://docs.anthropic.com/claude/docs/prompt-engineering)
 
