@@ -24,14 +24,14 @@ Ship Fast. Break Things. Fix Faster.
 
 ### 方式一：AI 驱动的交互式安装（推荐）
 
-使用 [Claude Code](https://claude.ai/claude-code) 或 [Cursor](https://cursor.sh) 获得个性化的对话式安装体验：
+使用 [Claude Code](https://claude.ai/claude-code) 获得个性化的对话式安装体验：
 
 ```bash
 # 克隆仓库
 git clone https://github.com/larrykoo711/new-macos-starter.git
 cd new-macos-starter
 
-# 在 Claude Code 或 Cursor 终端中启动安装向导
+# 在 Claude Code 终端中启动安装向导
 /new-macos-setup
 ```
 
@@ -91,25 +91,25 @@ bootstrap.sh 会安装 Xcode CLI Tools、Rosetta 2（Apple Silicon）和 Homebre
 
 | 工具 | 说明 |
 |------|------|
-| [Cursor](https://cursor.sh) | AI-first 代码编辑器（主力） |
-| [VS Code](https://code.visualstudio.com) | 备用编辑器 |
+| [VS Code](https://code.visualstudio.com) | 主力编辑器（免费、生态成熟、扩展丰富） |
+| [Claude Code](https://claude.ai/claude-code) VS Code 扩展 | 在编辑器内调用官方 AI 助手 |
 
 ### Vibe Coding（AI 辅助编程）
 
 | 工具 | 说明 |
 |------|------|
-| [Claude Code](https://claude.ai/claude-code) | Anthropic 官方 CLI，终端中的 AI 编程助手 |
-| [Cursor](https://cursor.sh) | AI-first 代码编辑器 |
+| [Claude Code](https://claude.ai/claude-code) | Anthropic 官方 Agent 型 CLI（推荐） |
 | [OpenCode](https://github.com/opencode-ai/opencode) | 开源终端 AI 编程工具 |
+| [Cherry Studio](https://github.com/CherryHQ/cherry-studio) | 多模型 AI 桌面客户端 |
 
 ### 必备应用
 
 | 类别 | 应用 |
 |------|------|
 | **必装** | Raycast, 1Password, Chrome, KeepingYouAwake, Keka |
-| **开发** | Cursor, Warp, OrbStack, Apifox, Proxyman, Sourcetree |
-| **工作** | 飞书, 钉钉, 企业微信, 腾讯会议, Notion |
-| **AI 工具** | Claude Code, LM Studio |
+| **开发** | VS Code, Warp, OrbStack, Proxyman, Sourcetree |
+| **通讯（中文）** | 飞书, 微信, 腾讯会议 |
+| **AI 工具** | Claude Code, Cherry Studio |
 | **系统** | iStat Menus, MonitorControl, Gas Mask |
 
 ## 文档
@@ -122,7 +122,7 @@ bootstrap.sh 会安装 Xcode CLI Tools、Rosetta 2（Apple Silicon）和 Homebre
 | [03. Shell](docs/03-shell.md) | Zsh + Oh-My-Zsh 配置 |
 | [04. 字体](docs/04-fonts.md) | 编程字体安装 |
 | [05. 开发环境](docs/05-dev-environment.md) | Git, Node.js, Python, Go, Container |
-| [06. 编辑器](docs/06-editor.md) | VS Code / Cursor 配置 |
+| [06. 编辑器](docs/06-editor.md) | VS Code + Claude Code 配置 |
 | [07. Vibe Coding](docs/07-vibe-coding.md) | AI 辅助编程工具 |
 | [08. 应用](docs/08-apps.md) | 推荐应用 |
 | [09. macOS](docs/09-macos.md) | 系统优化 |

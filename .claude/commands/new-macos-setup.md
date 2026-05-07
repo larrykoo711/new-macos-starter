@@ -101,7 +101,7 @@ command -v git && echo "Git: installed"
 command -v zsh && echo "Zsh: installed"
 [ -d "$HOME/.oh-my-zsh" ] && echo "Oh-My-Zsh: installed"
 command -v code && echo "VS Code: installed"
-command -v cursor && echo "Cursor: installed"
+command -v claude && echo "Claude Code: installed"
 
 # Check language managers
 command -v fnm && echo "fnm: installed"
@@ -163,10 +163,9 @@ Which cloud CLI tools do you need?
 #### Q5: Collaboration Apps
 ```
 Which collaboration apps should be installed?
-- Work Suite (Lark/DingTalk/WeCom + Tencent Meeting)
-- International (Slack + Discord + WhatsApp)
-- Both
-- None
+- Work (CN: Lark + WeChat + Tencent Meeting)
+- None  (mainstream international tools like Slack/Discord/WhatsApp/Notion
+         are easy to install on demand and intentionally not in defaults)
 ```
 
 #### Q6: macOS Optimization
@@ -198,12 +197,12 @@ Based on detection and preferences, generate a structured plan:
 - [ ] eza, bat, fd, ripgrep (modern CLI)
 
 ### Phase 2: Language Environment
-- [ ] fnm + Node.js LTS + pnpm
-- [ ] uv + Python 3.12
-- [ ] goenv + Go latest
+- [ ] fnm + Node.js 24 LTS + pnpm
+- [ ] uv + Python 3.13
+- [ ] goenv + Go 1.25.x
 
 ### Phase 3: Development Apps
-- [ ] Cursor
+- [ ] VS Code
 - [ ] Warp
 - [ ] OrbStack
 

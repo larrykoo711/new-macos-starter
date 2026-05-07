@@ -19,7 +19,7 @@ macOS Starter is an opinionated macOS development environment setup guide. It pr
 # Verify installation status
 ./scripts/verify.sh
 
-# Interactive setup (in Claude Code or Cursor)
+# Interactive setup (in Claude Code)
 /new-macos-setup                      # Full interactive wizard
 /new-macos-setup --preset fullstack   # Use preset configuration
 /new-macos-setup --dry-run            # Preview without installing

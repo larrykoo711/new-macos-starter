@@ -14,7 +14,7 @@
 - [ ] **release-please**：main 合并自动维护 CHANGELOG 与 git tag
 
 ### 工具链扩展
-- [ ] **VSCode/Cursor 扩展自动安装**：`code --install-extension <id>` 列表
+- [ ] **VS Code 扩展自动安装**：`code --install-extension <id>` 推荐清单（含 anthropic.claude-code）
 - [ ] **Karabiner-Elements 模板**：`configs/karabiner/karabiner.json`（Caps→Hyper、Cmd 双击等）
 - [ ] **Ghostty 配置模板**：`configs/terminal/ghostty.config`
 

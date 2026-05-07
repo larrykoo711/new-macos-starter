@@ -24,15 +24,14 @@ Ship Fast. Break Things. Fix Faster.
 
 ### Option 1: AI-Powered Interactive Setup (Recommended)
 
-Use [Claude Code](https://claude.ai/claude-code) or [Cursor](https://cursor.sh) for a personalized, conversational setup experience:
+Use [Claude Code](https://claude.ai/claude-code) for a personalized, conversational setup experience:
 
 ```bash
 # Clone this repo
 git clone https://github.com/larrykoo711/new-macos-starter.git
 cd new-macos-starter
 
-# Start the interactive setup wizard
-# In Claude Code or Cursor terminal:
+# Start the interactive setup wizard in Claude Code:
 /new-macos-setup
 ```
 
@@ -92,25 +91,25 @@ The bootstrap script will install Xcode CLI Tools, Rosetta 2 (if Apple Silicon),
 
 | Tool | Description |
 |------|-------------|
-| [Cursor](https://cursor.sh) | AI-first code editor (primary) |
-| [VS Code](https://code.visualstudio.com) | Backup editor |
+| [VS Code](https://code.visualstudio.com) | Primary editor (free, mature, great extension ecosystem) |
+| [Claude Code](https://claude.ai/claude-code) extension for VS Code | Native AI pair-programming inside the editor |
 
 ### Vibe Coding (AI-Assisted Programming)
 
 | Tool | Description |
 |------|-------------|
-| [Claude Code](https://claude.ai/claude-code) | Anthropic's official CLI for AI programming in terminal |
-| [Cursor](https://cursor.sh) | AI-first code editor |
+| [Claude Code](https://claude.ai/claude-code) | Anthropic's official agentic CLI (recommended) |
 | [OpenCode](https://github.com/opencode-ai/opencode) | Open-source terminal AI coding tool |
+| [Cherry Studio](https://github.com/CherryHQ/cherry-studio) | Multi-model AI desktop client |
 
 ### Essential Apps
 
 | Category | Apps |
 |----------|------|
 | **Must Have** | Raycast, 1Password, Chrome, KeepingYouAwake, Keka |
-| **Development** | Cursor, Warp, OrbStack, Apifox, Proxyman, Sourcetree |
-| **Productivity** | Notion, Slack, Discord |
-| **AI Tools** | Claude Code, LM Studio |
+| **Development** | VS Code, Warp, OrbStack, Proxyman, Sourcetree |
+| **Communication (CN)** | Lark, WeChat, Tencent Meeting |
+| **AI Tools** | Claude Code, Cherry Studio |
 | **System** | iStat Menus, MonitorControl, Gas Mask |
 
 ## Documentation
@@ -123,7 +122,7 @@ The bootstrap script will install Xcode CLI Tools, Rosetta 2 (if Apple Silicon),
 | [03. Shell](docs/03-shell.md) | Zsh + Oh-My-Zsh configuration |
 | [04. Fonts](docs/04-fonts.md) | Programming fonts installation |
 | [05. Dev Environment](docs/05-dev-environment.md) | Git, Node.js, Python, Go, Container |
-| [06. Editor](docs/06-editor.md) | VS Code / Cursor configuration |
+| [06. Editor](docs/06-editor.md) | VS Code + Claude Code configuration |
 | [07. Vibe Coding](docs/07-vibe-coding.md) | AI-assisted programming tools |
 | [08. Apps](docs/08-apps.md) | Recommended applications |
 | [09. macOS](docs/09-macos.md) | System optimization |
