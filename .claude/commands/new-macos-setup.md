@@ -36,6 +36,7 @@ This command provides an **interactive, conversational setup experience** for co
 - `--quick`: Skip detailed questions, use sensible defaults
 - `--preset <name>`: Use a predefined configuration (fullstack, frontend, backend, data, devops)
 - `--dry-run`: Generate and display the plan without executing
+- `--sync-dotfiles`: 仅执行 Phase 9 配置部署（跳过包安装），等价于直接调用 `scripts/install-dotfiles.sh`
 
 ---
 
@@ -229,6 +230,33 @@ Execute each phase with clear progress:
 5. Move to next step
 
 Use TodoWrite to track progress visible to user.
+
+### Phase 9: Config Deployment (v0.2 NEW)
+
+After packages and macOS defaults are applied, deploy dotfiles via the dedicated script:
+
+```bash
+# 1. Preview symlink/backup plan
+./scripts/install-dotfiles.sh --dry-run
+
+# 2. Confirm with user via AskUserQuestion before execution
+
+# 3. Apply symlinks (existing files auto-backed up to .bak.<timestamp>)
+./scripts/install-dotfiles.sh
+
+# 4. ~/.gitconfig 涉及 user.name / user.email — 单独提示用户填写
+git config --global user.name
+git config --global user.email
+
+# 5. Claude Code settings — 不做 symlink，提示手动复制
+# 因为 Claude Code 有自己的 settings 层级，symlink 可能引发权限问题
+[[ -f configs/claude/settings.json ]] && \
+  echo "建议: cp configs/claude/settings.json ~/.claude/settings.json"
+```
+
+Use `TodoWrite` to record this phase. Mark complete only after `~/.zshrc` is a valid symlink.
+
+---
 
 ### Phase 5: Post-Setup Verification
 

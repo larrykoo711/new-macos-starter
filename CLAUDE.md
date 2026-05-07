@@ -43,18 +43,35 @@ configs/                    # Template configurations
 
 scripts/
 ├── bootstrap.sh            # Prerequisites installer
-├── verify.sh               # Installation verification
+├── verify.sh               # Installation verification (+ --json in v0.2)
+├── install-dotfiles.sh     # Symlink configs/ → ~ (v0.2 NEW)
+├── macos-defaults.sh       # macOS system tweaks (v0.2)
 └── Brewfile                # Homebrew package definitions
 ```
 
 ## /new-macos-setup Skill Execution Flow
 
 1. **Network Check** - Verify GitHub/Homebrew access, configure proxy if needed
-2. **System Detection** - Detect installed tools using `command -v` and app checks
+2. **System Detection** - Version-aware detection: `tool --version` + `brew list --versions`
 3. **Interactive Q&A** - Use `AskUserQuestion` to collect preferences
 4. **Plan Generation** - Create markdown plan with skip detection
 5. **Execution** - Run `brew install` commands with progress tracking via `TodoWrite`
-6. **Verification** - Confirm installations succeeded
+6. **macOS Defaults** - Run `scripts/macos-defaults.sh` (category-based with `--dry-run`)
+7. **Config Deployment** (v0.2) - Run `scripts/install-dotfiles.sh` to symlink `configs/` → `~`
+8. **Verification** - Run `scripts/verify.sh` (use `--json` for machine-readable output)
+
+### Phase 9: Config Deployment (v0.2)
+
+After packages installed, deploy dotfiles via symlink:
+
+```bash
+./scripts/install-dotfiles.sh --dry-run    # preview backup + symlink plan
+./scripts/install-dotfiles.sh              # apply (auto-backup .bak.<timestamp>)
+```
+
+`~/.gitconfig` requires `user.name` / `user.email` confirmation via AskUserQuestion before symlinking.
+`configs/claude/settings.json` is NOT auto-symlinked (Claude Code has its own settings hierarchy);
+prompt user to manually `cp configs/claude/settings.json ~/.claude/settings.json`.
 
 ## Configuration Targets
 

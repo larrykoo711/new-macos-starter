@@ -371,6 +371,12 @@ Generate structured installation plan based on answers:
 - [ ] Dock optimization
 - [ ] Keyboard settings
 - [ ] Finder preferences
+
+### Phase 9: Config Deployment (NEW in v0.2)
+- [ ] Backup existing dotfiles → `~/.zshrc.bak.<时间戳>`
+- [ ] Symlink `configs/` → `~` via `scripts/install-dotfiles.sh`
+- [ ] Confirm `~/.gitconfig` user.name/user.email
+- [ ] Manual copy: `configs/claude/settings.json` → `~/.claude/settings.json`
 ```
 
 ### 4. Execution Engine
@@ -464,11 +470,81 @@ execute_phase "6: Shell Configuration"
 
 # Phase 7: macOS
 execute_phase "7: macOS Optimization"
+# 推荐使用独立脚本：./scripts/macos-defaults.sh --all
+# 或分类执行：./scripts/macos-defaults.sh --category dock
 defaults write com.apple.dock show-recents -bool false
 defaults write NSGlobalDomain KeyRepeat -int 2
 # ...
 
+# Phase 8: Config Deployment (NEW in v0.2)
+execute_phase "8: Config Deployment"
+# 步骤 1：dry-run 预览将创建的 symlink 和备份计划
+./scripts/install-dotfiles.sh --dry-run
+
+# 步骤 2：用 AskUserQuestion 让用户确认
+# 步骤 3：实际执行
+./scripts/install-dotfiles.sh
+
+# 步骤 4：~/.gitconfig 涉及个人邮箱，单独提示用户检查并填入
+echo "请确认 ~/.gitconfig 中的 user.name/user.email："
+git config --global user.name
+git config --global user.email
+
+# 步骤 5：Claude Code settings 模板需手动复制（Claude 有自己的 settings 层级）
+if [[ -f configs/claude/settings.json ]] && [[ ! -f "$HOME/.claude/settings.json" ]]; then
+    echo "提示：请手动复制 Claude settings 模板"
+    echo "  cp configs/claude/settings.json ~/.claude/settings.json"
+fi
+
 echo "✅ Setup complete!"
+```
+
+### TodoWrite Progress Tracking (REQUIRED in v0.2)
+
+每个 Phase 必须在执行前后调用 TodoWrite，让用户在 Claude Code 面板看到实时进度：
+
+```
+执行模型：
+1. 进入 Phase N 前：TodoWrite(subject="Phase N: <name>", status="in_progress")
+2. Phase 完成时：TodoWrite(taskId, status="completed")
+3. Phase 失败时：保持 in_progress，附 description 说明阻塞原因，新建修复任务
+```
+
+Phase 列表（按顺序执行）：
+- Phase 1: 系统检测（version-aware）
+- Phase 2: CLI Tools
+- Phase 3: Language Environments
+- Phase 4: Applications
+- Phase 5: Vibe Coding Tools
+- Phase 6: Fonts
+- Phase 7: Shell Configuration
+- Phase 8: macOS Defaults
+- Phase 9: Config Deployment (v0.2 NEW)
+
+### Version-Aware Detection (UPGRADED in v0.2)
+
+旧版只判断 `command -v` 安装/未安装；v0.2 输出版本号并与 Homebrew 记录对比：
+
+```bash
+detect_with_version() {
+    local cmd="$1"
+    local name="${2:-$cmd}"
+    if command -v "$cmd" &>/dev/null; then
+        # 提取首行版本输出
+        local actual
+        actual=$("$cmd" --version 2>/dev/null | head -1 || echo "unknown")
+        # 与 brew list --versions 对比（仅当通过 brew 安装时有意义）
+        local brewver
+        brewver=$(brew list --versions "$cmd" 2>/dev/null | awk '{print $2}')
+        if [[ -n "$brewver" ]]; then
+            echo "✅ $name: $actual (brew: $brewver)"
+        else
+            echo "✅ $name: $actual"
+        fi
+    else
+        echo "❌ $name: not installed"
+    fi
+}
 ```
 
 ---
