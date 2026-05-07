@@ -1,0 +1,132 @@
+{
+  "_README": "macOS Starter 提供的 Claude Code settings 模板。复制到 ~/.claude/settings.json 后按需调整。下方 _* 字段供阅读，不会被 Claude Code 使用。",
+
+  "_required_to_change": [
+    "language: 默认 'Chinese'，按习惯改成 'English' 或其他",
+    "outputStyle: 默认 'default'，可选 'engineer-professional' / 'tts' 等",
+    "statusLine: 默认未启用，安装 CCometixLine 后参考下方注释取消启用",
+    "enabledPlugins: 列表为常用官方插件，按需删减"
+  ],
+
+  "language": "Chinese",
+  "outputStyle": "default",
+  "effortLevel": "high",
+  "alwaysThinkingEnabled": false,
+
+  "env": {
+    "CLAUDE_CODE_DISABLE_TERMINAL_TITLE": "1",
+    "ENABLE_TOOL_SEARCH": "true"
+  },
+
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+
+  "_statusLine_example": {
+    "type": "command",
+    "command": "ccline",
+    "padding": 0,
+    "_install": "npm install -g @cometix/ccline"
+  },
+
+  "enabledPlugins": {
+    "code-review@claude-plugins-official": true,
+    "commit-commands@claude-plugins-official": true,
+    "context7@claude-plugins-official": true,
+    "feature-dev@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
+    "pr-review-toolkit@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": true
+  },
+
+  "permissions": {
+    "defaultMode": "default",
+    "_note": "首次使用建议保持 default 模式（每次询问），熟悉后再切换 acceptEdits / auto。永远不要在共享/不可信仓库中启用 bypassPermissions。",
+    "allow": [
+      "WebSearch",
+      "mcp__plugin_context7_context7__*",
+      "mcp__ide__getDiagnostics",
+
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:api.github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:docs.github.com)",
+      "WebFetch(domain:gist.github.com)",
+      "WebFetch(domain:docs.anthropic.com)",
+      "WebFetch(domain:docs.npmjs.com)",
+      "WebFetch(domain:nodejs.org)",
+      "WebFetch(domain:developer.mozilla.org)",
+      "WebFetch(domain:stackoverflow.com)",
+
+      "Bash(brew:*)",
+      "Bash(git:*)",
+      "Bash(gh:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(rg:*)",
+      "Bash(fd:*)",
+      "Bash(jq:*)",
+      "Bash(yq:*)",
+      "Bash(curl:*)",
+      "Bash(wget:*)",
+      "Bash(echo:*)",
+      "Bash(printf:*)",
+      "Bash(pwd:*)",
+      "Bash(cd:*)",
+      "Bash(mkdir:*)",
+      "Bash(touch:*)",
+      "Bash(cp:*)",
+      "Bash(mv:*)",
+      "Bash(chmod:*)",
+      "Bash(chown:*)",
+      "Bash(diff:*)",
+      "Bash(tree:*)",
+      "Bash(which:*)",
+      "Bash(type:*)",
+      "Bash(file:*)",
+      "Bash(head:*)",
+      "Bash(tail:*)",
+      "Bash(wc:*)",
+      "Bash(sort:*)",
+      "Bash(uniq:*)",
+      "Bash(awk:*)",
+      "Bash(sed:*)",
+      "Bash(date:*)",
+      "Bash(uname:*)",
+      "Bash(sw_vers:*)",
+
+      "Bash(node:*)",
+      "Bash(npm:*)",
+      "Bash(pnpm:*)",
+      "Bash(npx:*)",
+      "Bash(fnm:*)",
+
+      "Bash(python3:*)",
+      "Bash(uv:*)",
+      "Bash(pip:*)",
+      "Bash(pipx:*)",
+
+      "Bash(go:*)",
+      "Bash(goenv:*)",
+
+      "Bash(cargo:*)",
+      "Bash(rustc:*)",
+      "Bash(rustup:*)",
+
+      "Bash(docker:*)",
+      "Bash(docker compose:*)",
+      "Bash(kubectl:*)",
+      "Bash(helm:*)",
+      "Bash(k9s:*)",
+
+      "Bash(./scripts/bootstrap.sh:*)",
+      "Bash(./scripts/verify.sh:*)",
+      "Bash(./scripts/install-dotfiles.sh:*)",
+      "Bash(./scripts/macos-defaults.sh:*)",
+      "Bash(brew bundle:*)"
+    ]
+  }
+}

@@ -5,6 +5,9 @@
 [init]
     defaultBranch = main
 
+[commit]
+    template = ~/.stCommitMsg
+
 [core]
     editor = code --wait
     autocrlf = input

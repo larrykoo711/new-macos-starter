@@ -1,0 +1,30 @@
+# <type>(<scope>): <subject>
+# |<----  推荐 ≤ 50 字符  ---->|
+
+# Body: 解释 Why（What 看代码即可）— 何时/为何/对谁有影响
+# |<----  每行 ≤ 72 字符  ----------------------------------------------->|
+
+# Footer: 关联 issue / Breaking Change / Co-authored-by
+# Closes #<issue_number>
+# BREAKING CHANGE: <description>
+# Co-authored-by: Name <email@example.com>
+
+# ====== Type 速查（Conventional Commits）======
+# feat:     新功能
+# fix:      Bug 修复
+# docs:     文档变更
+# style:    代码格式（不影响功能）
+# refactor: 重构（既非新功能也非修复）
+# perf:     性能优化
+# test:     测试相关
+# build:    构建系统/外部依赖（如 brew、npm、Cargo.toml）
+# ci:       CI 配置（如 GitHub Actions、release-please）
+# chore:    杂项（不修改 src 或 test）
+# revert:   回滚先前 commit
+
+# ====== Scope 示例 ======
+# (shell)   — configs/shell/.zshrc 相关
+# (skill)   — .claude/skills/ 相关
+# (verify)  — scripts/verify.sh
+# (docs)    — docs/ 文档章节
+# (npm)     — npm/pnpm 配置
