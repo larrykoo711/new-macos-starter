@@ -79,8 +79,16 @@ brew "danielfoehrkn/switch/switch"    # kubeswitch
 
 brew "awscli"
 brew "rclone"
-# brew "google-cloud-sdk"     # Uncomment if needed
+brew "google-cloud-sdk"       # gcloud / gsutil / bq
+brew "vercel-cli"             # Vercel deployment CLI
+brew "stripe-cli"             # Stripe webhooks & API testing
 # brew "azure-cli"            # Uncomment if needed
+
+# =============================================================================
+# Security & Secrets
+# =============================================================================
+
+brew "1password-cli"          # op — 1Password CLI for secrets in scripts
 
 # =============================================================================
 # Cask Applications - Must Have
