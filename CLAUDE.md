@@ -86,9 +86,9 @@ When applying configurations, copy to user home directory:
 
 | Language | Manager | Install Command |
 |----------|---------|-----------------|
-| Node.js | fnm | `fnm install --lts && fnm default lts-latest` |
-| Python | uv | `uv python install 3.12` |
-| Go | goenv | `goenv install <version> && goenv global <version>` |
+| Node.js | fnm | `fnm install 24 && fnm default 24` (Node 24 LTS) |
+| Python | uv | `uv python install 3.13` |
+| Go | goenv | `goenv install 1.25.1 && goenv global 1.25.1` |
 
 ## Tool Detection Patterns
 

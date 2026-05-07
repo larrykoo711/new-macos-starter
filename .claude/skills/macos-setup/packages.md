@@ -72,7 +72,7 @@ pnpm setup
 **Setup:**
 ```bash
 brew install uv
-uv python install 3.12
+uv python install 3.13
 ```
 
 ### Go

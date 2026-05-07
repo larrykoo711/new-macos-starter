@@ -332,8 +332,8 @@ Generate structured installation plan based on answers:
 | Language | Manager | Setup Command |
 |----------|---------|---------------|
 | Node.js | fnm | `fnm install --lts && fnm default lts-latest` |
-| Python | uv | `uv python install 3.12` |
-| Go | goenv | `goenv install latest && goenv global latest` |
+| Python | uv | `uv python install 3.13` |
+| Go | goenv | `goenv install 1.25.1 && goenv global 1.25.1` |
 
 ### Phase 4: Applications
 | App | Purpose | Command |

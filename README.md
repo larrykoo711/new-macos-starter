@@ -164,7 +164,7 @@ fnm install --lts
 fnm default lts-latest
 
 # 2. Setup Python
-uv python install 3.12
+uv python install 3.13
 
 # 3. Configure Git (edit with your info)
 git config --global user.name "Your Name"

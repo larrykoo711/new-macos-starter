@@ -37,7 +37,7 @@ npm install -g pnpm
 
 # Python
 brew install uv
-uv python install 3.12
+uv python install 3.13
 ```
 
 ### Container & K8s
@@ -151,7 +151,7 @@ goenv global "$LATEST_GO"
 
 # Python
 brew install uv
-uv python install 3.12
+uv python install 3.13
 ```
 
 ### Container & K8s
@@ -202,10 +202,10 @@ brew install tree wget curl jq yq
 
 ### Languages
 ```bash
-# Python (primary)
+# Python (primary) — keep 3.13 default, 3.11 for legacy ML libs
 brew install uv
+uv python install 3.13
 uv python install 3.11
-uv python install 3.12
 
 # Node.js (for Jupyter extensions)
 brew install fnm
@@ -268,7 +268,7 @@ brew install goenv go
 
 # Python (for automation)
 brew install uv
-uv python install 3.12
+uv python install 3.13
 ```
 
 ### Container & K8s (Full)

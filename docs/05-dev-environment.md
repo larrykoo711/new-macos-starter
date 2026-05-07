@@ -146,7 +146,7 @@ echo 'eval "$(fnm env --use-on-cd)"' >> ~/.zshrc
 
 ```bash
 # 安装 Node.js
-fnm install 22        # 安装 v22
+fnm install 24        # 安装 Node.js 24 LTS（默认推荐）
 fnm install --lts     # 安装 LTS
 
 # 切换版本
@@ -225,15 +225,15 @@ brew install uv
 ### Python 版本管理
 
 ```bash
-# 安装 Python 版本
-uv python install 3.12
+# 安装 Python 版本（推荐 3.13 作为默认；3.14 可作为预览）
 uv python install 3.13
+uv python install 3.14
 
 # 列出已安装版本
 uv python list
 
 # 设置项目 Python 版本
-uv python pin 3.12
+uv python pin 3.13
 ```
 
 ### Usage
@@ -333,7 +333,7 @@ echo 'export PATH="$GOPATH/bin:$PATH"' >> ~/.zshrc
 
 ```bash
 # 安装 Go 版本
-goenv install 1.23.9
+goenv install 1.25.1
 goenv global 1.23.9
 
 # 初始化项目
@@ -607,10 +607,11 @@ switch
 # 安装 SDKMAN（如未安装）
 curl -s "https://get.sdkman.io" | bash
 
-# 安装多个 Java 版本
-sdk install java 11.0.28-amzn
-sdk install java 17.0.13-amzn
-sdk install java 21.0.8-amzn
+# 安装多个 Java 版本（具体小版本号会随时间升级，下面只是示例）
+# 列出可用版本：sdk list java | grep amzn
+sdk install java 21-amzn   # 推荐 LTS 主力
+sdk install java 17-amzn   # 兼容老项目
+sdk install java 11-amzn   # 仅旧系统需要时安装
 
 # 切换版本（不依赖硬编码版本号）
 java_switch 11    # 自动找最新已安装的 Java 11 (amzn)
@@ -775,14 +776,14 @@ rclone sync local/path remote:bucket/path
 ### Node.js
 
 ```dockerfile
-FROM node:22-alpine AS builder
+FROM node:24-alpine AS builder
 WORKDIR /app
 COPY package.json pnpm-lock.yaml ./
 RUN corepack enable && pnpm install --frozen-lockfile
 COPY . .
 RUN pnpm build
 
-FROM node:22-alpine AS runner
+FROM node:24-alpine AS runner
 WORKDIR /app
 ENV NODE_ENV=production
 RUN addgroup --system --gid 1001 nodejs
@@ -797,7 +798,7 @@ CMD ["node", "server.js"]
 ### Go
 
 ```dockerfile
-FROM golang:1.23-alpine AS builder
+FROM golang:1.25-alpine AS builder
 WORKDIR /app
 COPY go.mod go.sum ./
 RUN go mod download
@@ -816,13 +817,13 @@ CMD ["/server"]
 ### Python
 
 ```dockerfile
-FROM python:3.12-slim AS builder
+FROM python:3.13-slim AS builder
 WORKDIR /app
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /bin/uv
 COPY pyproject.toml uv.lock ./
 RUN uv sync --frozen --no-dev
 
-FROM python:3.12-slim
+FROM python:3.13-slim
 WORKDIR /app
 COPY --from=builder /app/.venv ./.venv
 COPY . .
