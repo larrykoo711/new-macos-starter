@@ -64,6 +64,18 @@ export LC_ALL="${LC_ALL:-en_US.UTF-8}"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
+# PostgreSQL CLI tools (libpq) — keg-only formula
+# 踩坑：libpq 是 keg-only 包，brew 不会自动 link，psql/pg_dump 命令不会进 PATH
+# 必须显式追加，否则连接 PG 时会找不到 psql 命令
+if [[ "$(uname -m)" == "arm64" ]]; then
+    [[ -d /opt/homebrew/opt/libpq/bin ]] && export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+else
+    [[ -d /usr/local/opt/libpq/bin ]] && export PATH="/usr/local/opt/libpq/bin:$PATH"
+fi
+
+# Optional: LM Studio CLI (取消注释以启用)
+# [[ -d "$HOME/.lmstudio/bin" ]] && export PATH="$PATH:$HOME/.lmstudio/bin"
+
 # Add JAVA_HOME to PATH only if it's defined (managed by SDKMAN)
 [[ -n "$JAVA_HOME" ]] && export PATH="$JAVA_HOME/bin:$PATH"
 
@@ -77,13 +89,14 @@ if command -v uv >/dev/null 2>&1; then
 fi
 
 # goenv - Go version manager (direct loading for subprocess compatibility)
-# Note: Lazy loading breaks subprocesses (like air) that need 'go' in PATH
+# 踩坑 1：lazy loading 会让子进程（如 air 热重载）找不到 go 命令，必须直接加载
+# 踩坑 2：homebrew 自带 go，会污染 PATH 优先级，必须把 goenv shims 强制前置
 if command -v goenv >/dev/null 2>&1; then
     export GOENV_ROOT="$HOME/.goenv"
     export PATH="$GOENV_ROOT/bin:$PATH"
     eval "$(goenv init -)"
-    export PATH="$GOPATH/bin:$PATH"
-    export PATH="$HOME/go/bin:$PATH"
+    # 强制 shims 前置覆盖 homebrew 的 go
+    export PATH="$GOENV_ROOT/shims:$HOME/go/bin:$PATH"
 fi
 
 # Fast Node Manager (fnm) - Node.js version manager (direct loading for stability)
@@ -94,31 +107,40 @@ fi
 # =============================================================================
 # Network Proxy Configuration
 # =============================================================================
+# 默认端口 7890（Clash/ClashX/Mihomo），可通过 PROXY_PORT 环境变量覆盖
+export PROXY_PORT="${PROXY_PORT:-7890}"
 
-# Enable network proxy
+# 通用代理：根据 PROXY_PORT 启用 HTTP/HTTPS/SOCKS5
 function proxy() {
     export no_proxy="localhost,127.0.0.1,localaddress,.localdomain.com"
-    export http_proxy="http://127.0.0.1:7890"
+    export http_proxy="http://127.0.0.1:${PROXY_PORT}"
     export https_proxy=$http_proxy
-    export all_proxy=socks5://127.0.0.1:7890
-    curl -s -XGET "http://ip-api.com/json" | jq
-    echo -e "\\n"
-    echo -e "\\033[32mProxy enabled\\033[0m"
+    export all_proxy="socks5://127.0.0.1:${PROXY_PORT}"
+    if command -v jq >/dev/null 2>&1; then
+        curl -s -XGET "http://ip-api.com/json" | jq
+    else
+        curl -s -XGET "http://ip-api.com/json"
+    fi
+    echo -e "\n\033[32m✓ Proxy enabled (port ${PROXY_PORT})\033[0m"
 }
+
+# Clash 客户端专用别名（语义化）— 与 proxy() 等价，仅命名差异
+function clash()     { proxy }
+function clash_off() { proxy_off }
 
 # Disable proxy
 function proxy_off(){
     unset http_proxy
     unset https_proxy
     unset all_proxy
-    echo -e "Proxy disabled"
+    echo -e "\033[33m✗ Proxy disabled\033[0m"
 }
 
 # Set proxy for Git (one-time)
 function git_proxy() {
-    git config --global http.proxy "http://127.0.0.1:7890"
-    git config --global https.proxy "http://127.0.0.1:7890"
-    echo "Git proxy configured"
+    git config --global http.proxy "http://127.0.0.1:${PROXY_PORT}"
+    git config --global https.proxy "http://127.0.0.1:${PROXY_PORT}"
+    echo "Git proxy configured (port ${PROXY_PORT})"
 }
 
 function git_proxy_off() {
@@ -127,7 +149,7 @@ function git_proxy_off() {
     echo "Git proxy removed"
 }
 
-# Uncomment to auto-enable proxy on terminal start:
+# Uncomment to auto-enable proxy on terminal start (中国网络环境推荐):
 # proxy
 
 # =============================================================================
@@ -187,6 +209,20 @@ alias k="kubectl"
 alias kgp="kubectl get pods"
 alias kgs="kubectl get services"
 alias kgd="kubectl get deployments"
+
+# KUBECONFIG 多集群合并 — 自动扫描 ~/.kube/configs/*.yaml
+# 踩坑：默认 kubectl 只读 ~/.kube/config，多集群场景需手动 export，且每加一个就要改一次
+# 解法：动态扫描目录，新增集群只需把 yaml 丢到 ~/.kube/configs/ 即可
+if [[ -d "$HOME/.kube" ]]; then
+    _kubeconfigs="$HOME/.kube/config"
+    if [[ -d "$HOME/.kube/configs" ]]; then
+        for f in "$HOME"/.kube/configs/*.yaml(N) "$HOME"/.kube/configs/*.yml(N); do
+            [[ -f "$f" ]] && _kubeconfigs="${_kubeconfigs}:${f}"
+        done
+    fi
+    export KUBECONFIG="$_kubeconfigs"
+    unset _kubeconfigs
+fi
 
 # =============================================================================
 # Aliases - Development Tools
@@ -287,14 +323,25 @@ function bq() {
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-# Java version shortcuts (auto-detect latest installed versions)
-function java11() {
-    sdk use java $(sdk list java | grep 'amzn' | grep '11' | grep 'installed' | tail -1 | awk '{print $NF}')
+# Java version shortcuts — auto-detect latest installed amzn version
+# 用法：java_switch 11 / java_switch 17 / java_switch 21
+# 踩坑：硬编码版本号（如 "11.0.28-amzn"）每次升级都要改，改用动态匹配
+function java_switch() {
+    local major="${1:?Usage: java_switch <11|17|21>}"
+    local vendor="${2:-amzn}"
+    local version
+    version=$(sdk list java 2>/dev/null | grep "${vendor}" | grep -E " ${major}\." | grep 'installed' | tail -1 | awk '{print $NF}')
+    if [[ -z "$version" ]]; then
+        echo "✗ No installed Java ${major} (${vendor}) found. Run: sdk install java <version>" >&2
+        return 1
+    fi
+    sdk use java "$version"
 }
 
-function java21() {
-    sdk use java $(sdk list java | grep 'amzn' | grep '21' | grep 'installed' | tail -1 | awk '{print $NF}')
-}
+# Convenience aliases for common versions
+function java11() { java_switch 11 }
+function java17() { java_switch 17 }
+function java21() { java_switch 21 }
 
 # =============================================================================
 # Performance Optimization Functions
