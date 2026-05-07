@@ -4,6 +4,26 @@
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-05-07
+
+### Removed — 淘汰工具
+- **Cursor**：从 Brewfile / SKILL / presets / packages / docs / README 全面移除。AI 编辑器主推 VS Code + Claude Code 扩展组合
+- **Notion**：从默认推荐列表移除（用户自行下载即可）
+- **Slack / Discord / WhatsApp**：移出默认 Brewfile，文档保留"易于自行下载"说明
+- **Apifox**：API 调试工具按团队习惯自选，不再纳入默认
+- **LM Studio**：本地大模型运行器按硬件需求自选；Cherry Studio 为更通用的多模型客户端
+- **DingTalk / WeCom**：按用户反馈，从默认通讯应用列表移除
+
+### Changed — 编辑器策略
+- README / docs/06 / docs/07 / SKILL.md 一致：**VS Code（编辑器）+ Claude Code（CLI/扩展）** 作为推荐 AI 工作流
+- VS Code 通过 `code --install-extension anthropic.claude-code` 安装官方 Claude Code 扩展
+
+### Changed — 版本基线
+- **Python**：默认 3.12 → **3.13**（已 GA 一年多，生态稳定）；docs/05 同时演示 3.14 作为预览
+- **Node.js**：Dockerfile 示例 `node:22-alpine` → **`node:24-alpine`**（Active LTS 至 2028-04）；docs/05 `fnm install` 默认改为 24
+- **Go**：goenv 示例 `1.23.9` → **`1.25.1`**；Dockerfile `golang:1.23-alpine` → `golang:1.25-alpine`；SKILL `goenv install latest`（实际不存在的关键字）替换为具体版本
+- **Java**：SDKMAN 安装命令从 `<full-version>-amzn` 改为 `<major>-amzn`（自动取最新 patch，降低文档维护成本）
+
 ## [0.2.0] - 2026-05-07
 
 ### Added — 经验沉淀
@@ -51,6 +71,7 @@
 - AI 安装向导：`.claude/skills/macos-setup/SKILL.md`（581 行） + `/new-macos-setup` 命令
 - 中英双语 README
 
-[Unreleased]: https://github.com/larrykoo711/new-macos-starter/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/larrykoo711/new-macos-starter/compare/v0.2.1...HEAD
+[0.2.1]: https://github.com/larrykoo711/new-macos-starter/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/larrykoo711/new-macos-starter/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/larrykoo711/new-macos-starter/releases/tag/v0.1.0
