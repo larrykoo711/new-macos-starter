@@ -286,7 +286,8 @@ brew install --cask cherry-studio
 # CLAUDE.md / .cursorrules
 
 ## 项目简介
-这是一个 XXX 系统，用于 XXX 功能
+（一句话说明系统是什么、面向谁、解决什么问题，例如：
+"面向小型团队的任务追踪 SaaS，支持看板视图与日报自动汇总"）
 
 ## 技术栈
 - 语言: TypeScript/Go/Python
@@ -301,9 +302,9 @@ src/
 └── utils/       # 工具函数
 
 ## 编码规范
-- 使用 XXX 风格
-- 命名规范
-- 注释要求
+- 风格：函数式优先；副作用集中在 services 层；UI 组件不直接调 API
+- 命名：变量/函数 camelCase；类型/组件 PascalCase；常量 UPPER_SNAKE
+- 注释：仅在意图非显而易见时写「为什么」；不写「做什么」（看代码即可）
 ```
 
 ### 2. 高效提示词
@@ -434,6 +435,41 @@ echo "  1. Run 'claude login' to authenticate"
 echo "  2. Create CLAUDE.md in your projects"
 echo "  3. Configure .cursorrules for Cursor"
 ```
+
+---
+
+## Claude Code 配置模板（v0.2 NEW）
+
+仓库提供了一份精选的 `~/.claude/settings.json` 模板：`configs/claude/settings.json`。
+
+### 它做了什么
+
+- 启用 7 个常用官方插件（code-review、commit-commands、context7、feature-dev、frontend-design、pr-review-toolkit、superpowers）
+- 预授权 60+ 条 Bash/WebFetch 权限，避免日常开发被反复弹窗打断
+- 默认 `permissions.defaultMode: default`（首次询问），熟悉后可改为 `acceptEdits`
+- 开启 `effortLevel: high` + `language: Chinese`
+
+### 部署方法
+
+```bash
+# 不做 symlink（Claude Code 有自己的 settings 层级，symlink 可能引发权限问题）
+cp configs/claude/settings.json ~/.claude/settings.json
+```
+
+### 必改字段
+
+| 字段 | 默认 | 何时改 |
+|------|------|--------|
+| `language` | `Chinese` | 改成 `English` 或其他工作语言 |
+| `outputStyle` | `default` | 想要更专业的工程师风格改成 `engineer-professional` |
+| `enabledPlugins` | 7 个插件 | 不需要某个插件就删掉对应键 |
+| `statusLine` | 未启用 | 安装 CCometixLine 后参考 `_statusLine_example` 启用 |
+
+### 安全注意
+
+- **不要把私有 settings 提交到公共仓库**：模板是脱敏后的，本机使用习惯可能附带敏感 skill 引用或路径
+- **不要默认启用 `bypassPermissions`**：仅在受信仓库的隔离 worktree 中临时启用
+- 共享/演示场景：使用 `permissions.defaultMode: default` 而非 `auto`
 
 ---
 

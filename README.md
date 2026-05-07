@@ -127,6 +127,7 @@ The bootstrap script will install Xcode CLI Tools, Rosetta 2 (if Apple Silicon),
 | [07. Vibe Coding](docs/07-vibe-coding.md) | AI-assisted programming tools |
 | [08. Apps](docs/08-apps.md) | Recommended applications |
 | [09. macOS](docs/09-macos.md) | System optimization |
+| [10. Network (China)](docs/10-network-china.md) | China network mirrors & proxy |
 
 ## Project Structure
 

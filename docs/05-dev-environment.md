@@ -558,6 +558,83 @@ switch my-cluster
 switch list
 ```
 
+### KUBECONFIG 多集群合并（v0.2 新增）
+
+多集群场景下，默认 kubectl 只读 `~/.kube/config`。每加一个集群都改 `KUBECONFIG`
+环境变量很烦，且文件多了路径会越拼越长。`configs/shell/.zshrc` v0.2 提供了
+**自动扫描合并**：
+
+```bash
+# .zshrc 中已经包含的逻辑（无需手动加）
+if [[ -d "$HOME/.kube" ]]; then
+    _kubeconfigs="$HOME/.kube/config"
+    for f in "$HOME"/.kube/configs/*.yaml(N) "$HOME"/.kube/configs/*.yml(N); do
+        [[ -f "$f" ]] && _kubeconfigs="${_kubeconfigs}:${f}"
+    done
+    export KUBECONFIG="$_kubeconfigs"
+    unset _kubeconfigs
+fi
+```
+
+**使用方法**：
+
+```bash
+# 1. 把每个集群的 kubeconfig 文件丢到 ~/.kube/configs/ 下
+mkdir -p ~/.kube/configs
+mv ~/Downloads/cluster-aliyun-hk.yaml ~/.kube/configs/
+
+# 2. 重新 source（或开新终端）
+source ~/.zshrc
+
+# 3. 列出所有 context（来自所有合并后的 config 文件）
+kubectl config get-contexts
+
+# 4. 用 kubeswitch / kubectx 切换
+switch
+```
+
+**踩坑**：
+
+- 文件名建议含集群标识（如 `aliyun-hk.yaml`），方便排错
+- 各 config 中 context 名重复时，后加载的会覆盖前者 — 命名前缀化避免冲突
+- 不要在多个 config 里复用同一个 user 名称，否则 token 会互相覆盖
+
+### Java 多版本管理（v0.2 新增）
+
+`configs/shell/.zshrc` 提供动态 Java 版本切换函数 `java_switch`：
+
+```bash
+# 安装 SDKMAN（如未安装）
+curl -s "https://get.sdkman.io" | bash
+
+# 安装多个 Java 版本
+sdk install java 11.0.28-amzn
+sdk install java 17.0.13-amzn
+sdk install java 21.0.8-amzn
+
+# 切换版本（不依赖硬编码版本号）
+java_switch 11    # 自动找最新已安装的 Java 11 (amzn)
+java_switch 17
+java_switch 21
+
+# 兼容别名
+java11 / java17 / java21
+```
+
+**为什么不用静态别名**：
+
+```bash
+# ❌ 反例：每次升级 amzn JDK 都要改这一行
+alias java11="sdk use java 11.0.28-amzn"
+
+# ✅ 正例：动态匹配最新已安装版本
+function java_switch() {
+    local major="$1"
+    local version=$(sdk list java | grep amzn | grep -E " ${major}\." | grep installed | tail -1 | awk '{print $NF}')
+    sdk use java "$version"
+}
+```
+
 ### k9s (TUI)
 
 > 🆓 **开源免费** | 📦 Homebrew | [GitHub](https://github.com/derailed/k9s)

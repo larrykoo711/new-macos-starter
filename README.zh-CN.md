@@ -126,6 +126,7 @@ bootstrap.sh 会安装 Xcode CLI Tools、Rosetta 2（Apple Silicon）和 Homebre
 | [07. Vibe Coding](docs/07-vibe-coding.md) | AI 辅助编程工具 |
 | [08. 应用](docs/08-apps.md) | 推荐应用 |
 | [09. macOS](docs/09-macos.md) | 系统优化 |
+| [10. 中国网络](docs/10-network-china.md) | Clash / Homebrew / npm 镜像配置 |
 
 ## 项目结构
 
